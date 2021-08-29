@@ -1,4 +1,4 @@
-package school;
+package school.lesson10;
 
 /**
  * Hello world!
