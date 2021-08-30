@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 public class MainPage {
     protected WebDriver driver;
-    private static final Logger LOGGER = LoggerFactory.getLogger(Task1Test.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(MainPage.class.getName());
     private final By PROFILE_EMPTY_ICON = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div[2]/div/div");
     private final By PROFILE_ICON = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div");
     private final By ENTER_ICON = By.linkText("Войти");
@@ -35,27 +35,11 @@ public class MainPage {
         LOGGER.info("Осуществлён выход из профиля");
     }
 
-    public MainPage manageProfile() {
-        return new MainPage(driver);
-    }
-
-    public By getProfileIconEmptyBy() {
+    public By getPROFILE_EMPTY_ICON() {
         return PROFILE_EMPTY_ICON;
-    }
-
-    public By getPROFILE_ICON() {
-        return PROFILE_ICON;
     }
 
     public By getENTER_ICON() {
         return ENTER_ICON;
-    }
-
-    public By getOUT_ICON() {
-        return OUT_ICON;
-    }
-
-    public By getTAB_MY_TAPE() {
-        return TAB_MY_TAPE;
     }
 }
