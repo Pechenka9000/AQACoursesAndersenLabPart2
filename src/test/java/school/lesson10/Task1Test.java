@@ -2,7 +2,6 @@ package school.lesson10;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
-import static org.junit.Assert.*;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,6 +9,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
+
+/**
+ * Тестирование функционала сайта "https://habr.com/ru/all/" представлено одним test-case-ом;
+ * Test-case1 находится по ссылке:
+ * https://docs.google.com/document/d/1LejjmIwSaf50otFVvqCpHWGlodD1V1qhHdSQur3KVNw/edit?usp=sharing
+ */
 
 public class Task1Test {
     private WebDriver driver;

@@ -15,7 +15,7 @@ public class LoginPage {
     private final By passwordBy = By.id("password_field");
     private final By signInBy = By.xpath("//*[@id=\"login_form\"]/fieldset/div[4]/button");
     private final By titleBy = By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='E-mail'])[1]/preceding::div[1]");
-    MainPage mainPage;
+    MainPage mainPage = new MainPage(driver);
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
