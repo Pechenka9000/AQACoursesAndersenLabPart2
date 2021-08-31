@@ -1,9 +1,12 @@
-package school.lesson10;
+package school.lesson10.task2;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.*;
-
-import org.openqa.selenium.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +25,7 @@ public class Task1Test {
     private static final Logger LOGGER = LoggerFactory.getLogger(Task1Test.class.getName());
     private static final String EMAIL = "pechenka9000@gmail.com";
     private static final String PASSWORD = "Zetju2mkyv";
-    private static final By LINK_POST = By.xpath("//*[@id=\"574528\"]/div[1]/h2/a");
+    private static final By LINK_POST = By.xpath("//span[contains(text(),'ЭТТ, или когда в резюме можно написать, что профес')]");
     private static final long IMPLICITLY_WAIT_TIMER = 20;
 
     @BeforeClass

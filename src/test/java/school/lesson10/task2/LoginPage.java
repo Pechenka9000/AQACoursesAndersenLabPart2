@@ -1,11 +1,11 @@
-package school.lesson10;
+package school.lesson10.task2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class LoginPage {
     protected WebDriver driver;
