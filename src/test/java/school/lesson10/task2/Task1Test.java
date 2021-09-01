@@ -18,7 +18,6 @@ import java.util.concurrent.TimeUnit;
  * Test-case1 находится по ссылке:
  * https://docs.google.com/document/d/1LejjmIwSaf50otFVvqCpHWGlodD1V1qhHdSQur3KVNw/edit?usp=sharing
  */
-
 public class Task1Test {
     private WebDriver driver;
     private static final String WEB_SITE_LINK = "https://habr.com/ru/all/";
@@ -46,7 +45,7 @@ public class Task1Test {
         LOGGER.info("Осуществлена загрузка сайта");
         LoginPage loginPage = new LoginPage(driver);
         MainPage mainPage = loginPage.loginValidUser(EMAIL, PASSWORD);
-        mainPage.addToBookmarks(LINK_POST);
+        mainPage.addPostFromTapeToBookmarks(LINK_POST);
         mainPage.logOut();
     }
 

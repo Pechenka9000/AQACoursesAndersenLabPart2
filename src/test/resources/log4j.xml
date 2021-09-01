@@ -6,6 +6,8 @@
         <param name="maxFileSize" value="10MB"/>
         <param name="maxBackupIndex" value="2"/>
         <param name="file" value="src/test/log/logfile_test.log"/>
+        <!--rewrite(false), addInfo(true)-->
+        <param name="Append" value="false" />
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern"
                    value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1} - %m%n"/>
