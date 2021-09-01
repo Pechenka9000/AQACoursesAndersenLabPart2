@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.junit.Assert.assertEquals;
 
 public class LoginPage {
     protected WebDriver driver;
@@ -26,12 +25,6 @@ public class LoginPage {
         LOGGER.info("Произведён клик на иконку профиля");
         driver.findElement(mainPage.getENTER_ICON()).click();
         LOGGER.info("Произведён клик по кнопке 'Войти'");
-        try {
-            assertEquals("Вход", driver.findElement(titleBy).getText());
-        } catch (Error e) {
-            LOGGER.error("Такого элемента нет на данной странице ", e);
-            verificationErrors.append(e);
-        }
         LOGGER.info("Верификация текста в заголовке");
         driver.findElement(emailBy).click();
         driver.findElement(emailBy).clear();
