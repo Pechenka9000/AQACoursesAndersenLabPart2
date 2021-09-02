@@ -18,10 +18,10 @@ import java.util.concurrent.TimeUnit;
  * Test-case1 находится по ссылке:
  * https://docs.google.com/document/d/1LejjmIwSaf50otFVvqCpHWGlodD1V1qhHdSQur3KVNw/edit?usp=sharing
  */
-public class Task1Test {
+public class Task2HabrTest {
     private WebDriver driver;
     private static final String WEB_SITE_LINK = "https://habr.com/ru/all/";
-    private static final Logger LOGGER = LoggerFactory.getLogger(Task1Test.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(Task2HabrTest.class.getName());
     private static final String EMAIL = "pechenka9000@gmail.com";
     private static final String PASSWORD = "Zetju2mkyv";
     private static final By LINK_POST = By.xpath("//span[contains(text(),'ЭТТ, или когда в резюме можно написать, что профес')]");
