@@ -1,13 +1,14 @@
-package school.lesson10.task2;
+package school.habrStructure;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MainPage {
+public class HabrMainPage {
     protected WebDriver driver;
-    private static final Logger LOGGER  = LoggerFactory.getLogger(MainPage.class.getName());
+    private static final Logger LOGGER  = LoggerFactory.getLogger(HabrMainPage.class.getName());
+    private final String WEB_SITE_LINK  = "https://habr.com/ru/all/";
     private final By PROFILE_EMPTY_ICON = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div[2]/div/div");
     private final By PROFILE_ICON       = By.xpath("//div[@data-test-id='menu-toggle-user']//*[local-name()='svg']");
     private final By ENTER_ICON         = By.linkText("Войти");
@@ -17,10 +18,10 @@ public class MainPage {
     private final By FIND_ICON          = By.xpath("//a[@class='tm-header-user-menu__item tm-header-user-menu__search']");
     private final By CONFIRM_FIND_ICON  = By.xpath("//div[@class='tm-input-text-decorated__label tm-input-text-decorated__label_after']");
     private final By SEARCH_RAW         = By.xpath("//input[@placeholder='Поиск']");
+    private final By LINK_COMMENT       = By.xpath("//article[@id='171703']//a[@class='tm-article-snippet__title-link']");
+    private final By LINK_POST          = By.xpath("//span[contains(text(),'ЭТТ, или когда в резюме можно написать, что профес')]");
 
-
-
-    public MainPage(WebDriver driver){
+    public HabrMainPage(WebDriver driver){
         this.driver = driver;
     }
 
@@ -90,5 +91,17 @@ public class MainPage {
 
     public By getENTER_ICON() {
         return ENTER_ICON;
+    }
+
+    public String getWEB_SITE_LINK() {
+        return WEB_SITE_LINK;
+    }
+
+    public By getLINK_COMMENT() {
+        return LINK_COMMENT;
+    }
+
+    public By getLINK_POST() {
+        return LINK_POST;
     }
 }

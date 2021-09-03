@@ -1,0 +1,49 @@
+package school.lesson11.task2;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import school.habrStructure.HabrLoginPage;
+import school.habrStructure.HabrMainPage;
+
+import java.util.concurrent.TimeUnit;
+
+import static org.junit.Assert.fail;
+
+public class Task2HabrTestCofig {
+    protected WebDriver driver;
+    protected static final Logger LOGGER = LoggerFactory.getLogger(Task2HabrTest.class.getName());
+    private StringBuffer verificationErrors = new StringBuffer();
+    HabrLoginPage habrLoginPage;
+    HabrMainPage habrMainPage;
+
+    @BeforeClass
+    public static void setupClass() {
+        WebDriverManager.chromedriver().setup();
+    }
+
+    @Before
+    public void setUp() {
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        habrMainPage = new HabrMainPage(driver);
+        driver.get(habrMainPage.getWEB_SITE_LINK());
+        driver.manage().window().maximize();
+        habrLoginPage = new HabrLoginPage(driver);
+        habrMainPage = habrLoginPage.loginValidUser(habrLoginPage.getEMAIL(), habrLoginPage.getPASSWORD());
+    }
+
+    @After
+    public void tearDown() {
+        driver.quit();
+        String verificationErrorString = verificationErrors.toString();
+        if (!"".equals(verificationErrorString)) {
+            fail(verificationErrorString);
+        }
+    }
+}
