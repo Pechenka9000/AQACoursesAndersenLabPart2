@@ -8,11 +8,17 @@ class TriangleTest extends TriangleTestConfig{
 
     @Test
     @DisplayName("Triangle assertSquare test")
-    void computeSquare() {
-        Assertions.assertAll("triangleSquares",
-        () -> Assertions.assertEquals(triangleSquares[0], triangle1.computeSquare(triangle1)),
-        () -> Assertions.assertEquals(triangleSquares[1], triangle2.computeSquare(triangle2)),
-        () -> Assertions.assertEquals(triangleSquares[2], triangle3.computeSquare(triangle3))
-    );
+    void computeSquareTest() {
+
+    }
+
+
+    @Test
+    @DisplayName("Triangle reality")
+    void isTriangleTest() {
+        TriangleRepository.getTriangleList().forEach(triangle -> {
+            Assertions.assertTrue(triangle.isTriangle(triangle));
+            System.out.println(triangle);
+        });
     }
 }
