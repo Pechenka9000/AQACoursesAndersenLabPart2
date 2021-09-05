@@ -1,9 +1,37 @@
-2021-09-02 00:44:22 INFO  LoginPage - Произведён клик на иконку профиля
-2021-09-02 00:44:25 INFO  LoginPage - Произведён клик по кнопке 'Войти'
-2021-09-02 00:44:25 INFO  LoginPage - Верификация текста в заголовке
-2021-09-02 00:44:27 INFO  TestCase2Test - Осуществлена загрузка сайта
-2021-09-02 00:44:33 INFO  MainPage - Осуществлён клик по значку поиска
-2021-09-02 00:44:34 INFO  MainPage - Введён текст 'Selenium IDE' в строку поиска
-2021-09-02 00:44:34 INFO  MainPage - Клик-инициализация по значку поиска
-2021-09-02 00:44:36 INFO  MainPage - Открыт искомый комментарий
-2021-09-02 00:44:36 INFO  MainPage - Комментарий добавлен в закладки
+2021-09-05 23:18:02 INFO  TriangleTestConfig - Соответствие периметров:
+expected - 19.7
+actual - 19.7
+2021-09-05 23:18:02 INFO  TriangleTestConfig - Соответствие периметров:
+expected - 21.9
+actual - 21.9
+2021-09-05 23:18:02 INFO  TriangleTestConfig - Соответствие периметров:
+expected - 10.0
+actual - 10.0
+2021-09-05 23:18:02 INFO  TriangleTestConfig - Test Successful for test Triangle assertPerimeter test 
+
+2021-09-05 23:18:02 INFO  TriangleTestConfig - Проверка треугольника на существование:
+expected - true
+actual - true
+2021-09-05 23:18:02 INFO  TriangleTestConfig - Проверка треугольника на существование:
+expected - true
+actual - true
+2021-09-05 23:18:02 INFO  TriangleTestConfig - Проверка треугольника на существование:
+expected - true
+actual - true
+2021-09-05 23:18:02 INFO  TriangleTestConfig - Проверка треугольника на существование:
+expected - false
+actual - false
+2021-09-05 23:18:02 INFO  TriangleTestConfig - Test Successful for test Triangle reality 
+
+2021-09-05 23:18:02 INFO  TriangleTestConfig - Соответствие площадей:
+expected - 12.786476987426987
+actual - 12.786476987426987
+2021-09-05 23:18:02 INFO  TriangleTestConfig - Соответствие площадей:
+expected - 18.72047325122951
+actual - 18.72047325122951
+2021-09-05 23:18:02 INFO  TriangleTestConfig - Соответствие площадей:
+expected - 3.968626966596886
+actual - 3.968626966596886
+2021-09-05 23:18:02 INFO  TriangleTestConfig - Test Successful for test Triangle assertSquare test 
+
+2021-09-05 23:18:02 INFO  TriangleTestConfig - Test result summary for TriangleTest {SUCCESSFUL=3}

@@ -4,27 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Triangle {
-    private static double a;
-    private static double b;
-    private static double c;
+    private double a;
+    private double b;
+    private double c;
 
-    public Triangle(double sideA, double sideB, double sideC) {
-        a = sideA;
-        b = sideB;
-        c = sideC;
+    public Triangle(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
     }
 
     public static double computePerimeter(Triangle triangle) {
-        return (a + b + c);
+        return (triangle.a + triangle.b + triangle.c);
     }
 
     public static double computeSquare(Triangle triangle) {
         double semiPerimeter = computePerimeter(triangle)/2;
-        return Math.sqrt(semiPerimeter * (semiPerimeter - a) * (semiPerimeter - b) * (semiPerimeter - c));
+        return Math.sqrt(semiPerimeter * (semiPerimeter - triangle.a) * (semiPerimeter - triangle.b) * (semiPerimeter - triangle.c));
     }
 
     public static boolean isTriangle(Triangle triangle) {
-        return ((a + b) > c) & ((b + c) > a) & ((a + c)) > b;
+        return ((triangle.a + triangle.b) > triangle.c) & ((triangle.b + triangle.c) > triangle.a) & ((triangle.a + triangle.c)) > triangle.b;
     }
 
     public static List<Double> squareListCreator() {

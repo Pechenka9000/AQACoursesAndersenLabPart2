@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TriangleRepository {
-    private static List<Triangle> triangleList = new ArrayList<>();
+    private static final List<Triangle> triangleList = new ArrayList<>();
     static {
-        triangleList.add(new Triangle(4.5, 6.2, 9.0));
-        triangleList.add(new Triangle(5.5, 6.9, 9.5));
-        triangleList.add(new Triangle(2.5, 3.2, 4.3));
+        triangleList.add(0, new Triangle(4.5, 6.2, 9.0));
+        triangleList.add(1, new Triangle(5.5, 6.9, 9.5));
+        triangleList.add(2, new Triangle(2.5, 3.2, 4.3));
     }
 
     public static List<Triangle> getTriangleList() {
