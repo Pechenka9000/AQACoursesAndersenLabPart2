@@ -17,10 +17,10 @@ public class Task1CRMTestConfig {
     protected WebDriver driver;
     protected static final Logger LOGGER = LoggerFactory.getLogger(Task1CRMTest.class.getName());
     private StringBuffer verificationErrors = new StringBuffer();
-    LoginPage loginPage;
-    MainPage mainPage;
-    CreateProjectPage createProjectPage;
-    CreateContactFacePage createContactFacePage;
+    protected LoginPage loginPage;
+    protected MainPage mainPage;
+    protected CreateProjectPage createProjectPage;
+    protected CreateContactFacePage createContactFacePage;
 
     @BeforeClass
     public static void setupClass() {
@@ -35,7 +35,6 @@ public class Task1CRMTestConfig {
         driver.get(mainPage.getWEB_SITE_LINK());
         driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
-        mainPage = loginPage.loginValidUser(mainPage.getLOGIN(), mainPage.getPASSWORD());
         createProjectPage = new CreateProjectPage(driver);
         createContactFacePage = new CreateContactFacePage(driver);
     }

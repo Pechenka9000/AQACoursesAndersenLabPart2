@@ -14,7 +14,7 @@ public class LoginPage {
     protected static final String PASSWORD = "Zetju2mkyv";
     private final By SIGN_IN_BUTTON = By.xpath("//*[@id=\"login_form\"]/fieldset/div[4]/button");
     private final By LOGIN_TITLE = By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='E-mail'])[1]/preceding::div[1]");
-    MainPage mainPage = new MainPage(driver);
+    private final MainPage mainPage = new MainPage(driver);
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;

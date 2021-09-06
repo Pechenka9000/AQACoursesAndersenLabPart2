@@ -7,9 +7,10 @@ import org.slf4j.LoggerFactory;
 
 public class CreateProjectPage {
     protected WebDriver driver;
-    MainPage mainPage;
+    private MainPage mainPage;
     private static final Logger LOGGER = LoggerFactory.getLogger(CreateProjectPage.class.getName());
     private final By PROJECT_NAME1                 = By.cssSelector("input[name='crm_project[name]']");
+    private final By CREATE_PROJECT_TITLE          = By.xpath("//h1[contains(text(),'Создать проект')]");
     private final By ORGANIZATION_NAME_FIELD       = By.xpath("//span[contains(text(),'Укажите организацию')]");
     private final By ORGANIZATION_NAME_RAW         = By.xpath("//div[@id='select2-drop']//input[@type='text']");
     private final By ORGANIZATION_NAME_FIELD_VALUE = By.xpath("//span[contains(text(),'diamondsPetroleumSuperSellers')]");
@@ -59,5 +60,37 @@ public class CreateProjectPage {
         mainPage = new MainPage(driver);
         driver.findElement(mainPage.getSAVE_AND_CLOSE_BUTTON()).click();
         LOGGER.info("Нажата кнопка 'Сохранить и закрыть'");
+    }
+
+    public By getORGANIZATION_NAME_FIELD_VALUE() {
+        return ORGANIZATION_NAME_FIELD_VALUE;
+    }
+
+    public By getPRIMARY_CONTACT_PERSON_VALUE() {
+        return PRIMARY_CONTACT_PERSON_VALUE;
+    }
+
+    public By getSUBDIVISION_VALUE() {
+        return SUBDIVISION_VALUE;
+    }
+
+    public By getPROJECT_CURATOR_VALUE() {
+        return PROJECT_CURATOR_VALUE;
+    }
+
+    public By getPROJECT_SUPERVISOR_VALUE() {
+        return PROJECT_SUPERVISOR_VALUE;
+    }
+
+    public By getPROJECT_ADMINISTRATOR_VALUE() {
+        return PROJECT_ADMINISTRATOR_VALUE;
+    }
+
+    public By getMANAGER_VALUE() {
+        return MANAGER_VALUE;
+    }
+
+    public By getCREATE_PROJECT_TITLE() {
+        return CREATE_PROJECT_TITLE;
     }
 }

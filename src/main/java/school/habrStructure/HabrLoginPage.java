@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 public class HabrLoginPage {
     protected WebDriver driver;
+    private final HabrMainPage habrMainPage = new HabrMainPage(driver);
     private static final Logger LOGGER = LoggerFactory.getLogger(HabrLoginPage.class.getName());
     private final By EMAIL_FIELD       = By.id("email_field");
     private final By PASSWORD_FIELD    = By.id("password_field");
@@ -15,18 +16,13 @@ public class HabrLoginPage {
     private final By LOGIN_TITLE       = By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='E-mail'])[1]/preceding::div[1]");
     private final String EMAIL         = "pechenka9000@gmail.com";
     private final String PASSWORD      = "Zetju2mkyv";
-    HabrMainPage habrMainPage = new HabrMainPage(driver);
 
     public HabrLoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
     public HabrMainPage loginValidUser(String userEmail, String password) {
-        driver.findElement(habrMainPage.getPROFILE_EMPTY_ICON()).click();
-        LOGGER.info("Осуществлён клик по иконке профиля");
-        driver.findElement(habrMainPage.getENTER_ICON()).click();
-        LOGGER.info("Осуществлён клик по кнопке 'Войти'");
-        LOGGER.info("Верификация текста ('Вход') в заголовке - "+ driver.findElement(LOGIN_TITLE).getText().equalsIgnoreCase("Вход"));
+
         driver.findElement(EMAIL_FIELD).click();
         driver.findElement(EMAIL_FIELD).clear();
         driver.findElement(EMAIL_FIELD).sendKeys(userEmail);
@@ -45,5 +41,9 @@ public class HabrLoginPage {
 
     public String getPASSWORD() {
         return PASSWORD;
+    }
+
+    public By getLOGIN_TITLE() {
+        return LOGIN_TITLE;
     }
 }

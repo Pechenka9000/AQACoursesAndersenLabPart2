@@ -71,4 +71,8 @@ public class MainPage {
     public By getCANCEL_BUTTON() {
         return CANCEL_BUTTON;
     }
+
+    public By getMAIN_PAGE_TITLE() {
+        return MAIN_PAGE_TITLE;
+    }
 }

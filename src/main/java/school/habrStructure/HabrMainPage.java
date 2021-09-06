@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 
 public class HabrMainPage {
     protected WebDriver driver;
+    private HabrMainPage habrMainPage;
+    private HabrProfileSettingsPage settingsPage;
     private static final Logger LOGGER  = LoggerFactory.getLogger(HabrMainPage.class.getName());
     private final String WEB_SITE_LINK  = "https://habr.com/ru/all/";
     private final By PROFILE_EMPTY_ICON = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div[2]/div/div");
@@ -20,9 +22,18 @@ public class HabrMainPage {
     private final By SEARCH_RAW         = By.xpath("//input[@placeholder='Поиск']");
     private final By LINK_COMMENT       = By.xpath("//article[@id='171703']//a[@class='tm-article-snippet__title-link']");
     private final By LINK_POST          = By.xpath("//span[contains(text(),'ЭТТ, или когда в резюме можно написать, что профес')]");
+    private final By LINK_POST_TITLE    = By.xpath("//span[contains(text(),'Selenium 2.0 — WebDriver. Впечатления, проблемы и ')]");
 
     public HabrMainPage(WebDriver driver){
         this.driver = driver;
+    }
+
+    public void startSignIn() {
+        habrMainPage = new HabrMainPage(driver);
+        driver.findElement(habrMainPage.getPROFILE_EMPTY_ICON()).click();
+        LOGGER.info("Осуществлён клик по иконке профиля");
+        driver.findElement(habrMainPage.getENTER_ICON()).click();
+        LOGGER.info("Осуществлён клик по кнопке 'Войти'");
     }
 
     public void addPostFromTapeToBookmarks(By link) {
@@ -51,30 +62,31 @@ public class HabrMainPage {
     }
 
     public void changeAndSaveProfileSettings(String name, String gender, String country, String region, String city) {
-        driver.findElement(By.xpath("//div[@data-test-id='menu-toggle-user']//*[local-name()='svg']")).click();
+        driver.findElement(PROFILE_ICON).click();
         LOGGER.info("Осуществлён клик по иконке профиля");
-        driver.findElement(By.xpath("//span[contains(text(),'Настройки профиля')]")).click();
+        settingsPage = new HabrProfileSettingsPage(driver);
+        driver.findElement(settingsPage.getPROFILE_SETTINGS_BUTTON()).click();
         LOGGER.info("Осуществлён клик по кнопке 'Настройки профиля'");
-        driver.findElement(By.xpath("//input[@name='fullname']")).clear();
-        driver.findElement(By.xpath("//input[@name='fullname']")).sendKeys(name);
+        driver.findElement(settingsPage.getREAL_NAME_RAW()).clear();
+        driver.findElement(settingsPage.getREAL_NAME_RAW()).sendKeys(name);
         LOGGER.info(String.format("Введён текст '%s' в поле 'Настоящее имя'", name));
-        driver.findElement(By.xpath("//select[@name='gender']")).click();
+        driver.findElement(settingsPage.getGENDER_SELECTOR()).click();
         LOGGER.info("Осуществлен клик в ячейку 'Пол'");
-        driver.findElement(By.xpath(String.format("//option[contains(text(),'%s')]", gender))).click();
+        driver.findElement(By.xpath(String.format(settingsPage.getXPATH_SELECTOR_FINDER(), gender))).click();
         LOGGER.info(String.format("Выбран пол - '%s'", gender));
-        driver.findElement(By.xpath("//select[@name='locationCountryId']")).click();
+        driver.findElement(settingsPage.getCOUNTRY_SELECTOR()).click();
         LOGGER.info("Осуществлен клик в ячейку 'Местоположение - страна'");
-        driver.findElement(By.xpath(String.format("//option[contains(text(),'%s')]", country))).click();
+        driver.findElement(By.xpath(String.format(settingsPage.getXPATH_SELECTOR_FINDER(), country))).click();
         LOGGER.info(String.format("Выбрана страна - '%s'", country));
-        driver.findElement(By.xpath("//select[@name='locationRegionId']")).click();
+        driver.findElement(settingsPage.getREGION_SELECTOR()).click();
         LOGGER.info("Осуществлен клик в ячейку 'Местоположение - регион'");
-        driver.findElement(By.xpath(String.format("//option[contains(text(),'%s')]", region))).click();
+        driver.findElement(By.xpath(String.format(settingsPage.getXPATH_SELECTOR_FINDER(), region))).click();
         LOGGER.info(String.format("Выбран регион - '%s'", region));
-        driver.findElement(By.xpath("//select[@name='locationCityId']")).click();
+        driver.findElement(settingsPage.getCITY_SELECTOR()).click();
         LOGGER.info("Осуществлен клик в ячейку 'Местоположение - город'");
-        driver.findElement(By.xpath(String.format("//option[contains(text(),'%s')]", city))).click();
+        driver.findElement(By.xpath(String.format(settingsPage.getXPATH_SELECTOR_FINDER(), city))).click();
         LOGGER.info(String.format("Выбран город - '%s'", city));
-        driver.findElement(By.xpath("//button[contains(text(),'Сохранить изменения')]")).click();
+        driver.findElement(settingsPage.getSAVE_CHANGES_BUTTON()).click();
         LOGGER.info("Осуществлен клик по кнопке 'Сохранить изменения'");
     }
 
@@ -103,5 +115,9 @@ public class HabrMainPage {
 
     public By getLINK_POST() {
         return LINK_POST;
+    }
+
+    public By getLINK_POST_TITLE() {
+        return LINK_POST_TITLE;
     }
 }

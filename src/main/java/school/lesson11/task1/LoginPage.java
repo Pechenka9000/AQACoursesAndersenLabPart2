@@ -18,7 +18,6 @@ public class LoginPage {
     }
 
     public MainPage loginValidUser(String login, String password) {
-        LOGGER.info("Верификация текста ('Логин') в заголовке - "+ driver.findElement(LOGIN_PAGE_TITLE).getText().equalsIgnoreCase("Логин"));
         driver.findElement(LOGIN_FIELD).clear();
         driver.findElement(LOGIN_FIELD).sendKeys(login);
         LOGGER.info(String.format("Введён логин - '%s'", login));
@@ -27,5 +26,9 @@ public class LoginPage {
         LOGGER.info(String.format("Введён пароль - '%s'", password));
         driver.findElement(SIGN_IN_BUTTON).click();
         return new MainPage(driver);
+    }
+
+    public By getLOGIN_PAGE_TITLE() {
+        return LOGIN_PAGE_TITLE;
     }
 }
