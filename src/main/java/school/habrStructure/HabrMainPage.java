@@ -23,6 +23,11 @@ public class HabrMainPage {
     private final By LINK_COMMENT       = By.xpath("//article[@id='171703']//a[@class='tm-article-snippet__title-link']");
     private final By LINK_POST          = By.xpath("//span[contains(text(),'ЭТТ, или когда в резюме можно написать, что профес')]");
     private final By LINK_POST_TITLE    = By.xpath("//span[contains(text(),'Selenium 2.0 — WebDriver. Впечатления, проблемы и ')]");
+    // new
+    private final By HABR_SERVICES_OPENER         = By.xpath("//button[@class='tm-header__dropdown-toggle']//*[local-name()='svg']");
+    private final By CAREER_OPENER         = By.xpath("//a[@href='https://career.habr.com?utm_source=habr&utm_medium=habr_top_panel']");
+
+
 
     public HabrMainPage(WebDriver driver){
         this.driver = driver;
@@ -30,10 +35,19 @@ public class HabrMainPage {
 
     public void startSignIn() {
         habrMainPage = new HabrMainPage(driver);
-        driver.findElement(habrMainPage.getPROFILE_EMPTY_ICON()).click();
+        driver.findElement(PROFILE_EMPTY_ICON).click();
         LOGGER.info("Осуществлён клик по иконке профиля");
-        driver.findElement(habrMainPage.getENTER_ICON()).click();
+        driver.findElement(ENTER_ICON).click();
         LOGGER.info("Осуществлён клик по кнопке 'Войти'");
+    }
+
+    public HabrCareerPage startCareer() {
+        habrMainPage = new HabrMainPage(driver);
+        driver.findElement(HABR_SERVICES_OPENER).click();
+        LOGGER.info("Осуществлено открытие списка сервисов Хабра");
+        driver.findElement(CAREER_OPENER).click();
+        LOGGER.info("Осуществлён клик по кнопке 'Карьера'");
+        return new HabrCareerPage();
     }
 
     public void addPostFromTapeToBookmarks(By link) {
@@ -119,5 +133,13 @@ public class HabrMainPage {
 
     public By getLINK_POST_TITLE() {
         return LINK_POST_TITLE;
+    }
+
+    public By getHABR_SERVICES_OPENER() {
+        return HABR_SERVICES_OPENER;
+    }
+
+    public By getCAREER_OPENER() {
+        return CAREER_OPENER;
     }
 }
