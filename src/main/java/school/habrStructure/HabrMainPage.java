@@ -24,7 +24,7 @@ public class HabrMainPage {
     private final By LINK_POST          = By.xpath("//span[contains(text(),'ЭТТ, или когда в резюме можно написать, что профес')]");
     private final By LINK_POST_TITLE    = By.xpath("//span[contains(text(),'Selenium 2.0 — WebDriver. Впечатления, проблемы и ')]");
     // new
-    private final By HABR_SERVICES_OPENER         = By.xpath("//button[@class='tm-header__dropdown-toggle']//*[local-name()='svg']");
+    private final By HABR_SERVICES_OPENER         = By.xpath("//button[@class='tm-header__dropdown-toggle']");
     private final By CAREER_OPENER         = By.xpath("//a[@href='https://career.habr.com?utm_source=habr&utm_medium=habr_top_panel']");
 
 
@@ -42,7 +42,6 @@ public class HabrMainPage {
     }
 
     public HabrCareerPage startCareer() {
-        habrMainPage = new HabrMainPage(driver);
         driver.findElement(HABR_SERVICES_OPENER).click();
         LOGGER.info("Осуществлено открытие списка сервисов Хабра");
         driver.findElement(CAREER_OPENER).click();

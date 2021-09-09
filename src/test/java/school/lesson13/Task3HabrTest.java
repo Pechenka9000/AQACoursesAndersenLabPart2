@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import school.habrStructure.HabrProfileSettingsPage;
-import school.lesson11.task2.Task2HabrTestCofig;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,22 +12,24 @@ import static org.junit.Assert.assertEquals;
  * Test-case2 и Test-case4 находятся по ссылке:
  * https://docs.google.com/document/d/14p2rgzeft96fiHZvV4V5nWB2sE_I9dd-dLs-68lmOtw/edit?usp=sharing
  */
-public class Task2HabrTest extends Task2HabrTestCofig {
+public class Task3HabrTest extends Task3HabrTestConfig {
 
     @Test
-    public void testCase2() {
-        LOGGER.info("Осуществлена загрузка сайта");
-        habrMainPage.startSignIn();
-        LOGGER.info("Верификация текста ('Вход') в заголовке - "+ driver.findElement(habrLoginPage.getLOGIN_TITLE()).getText().equalsIgnoreCase("Вход"));
-        habrMainPage = habrLoginPage.loginValidUser(habrLoginPage.getEMAIL(), habrLoginPage.getPASSWORD());
-        LOGGER.info("Осуществлена загрузка сайта");
-        habrMainPage.findSmthFromSearchRaw("Selenium IDE");
-        habrMainPage.addCommentToBookmarks(habrMainPage.getLINK_COMMENT());
-        Assertions.assertEquals(LINK_TITLE_TEXT, driver.findElement(habrMainPage.getLINK_POST_TITLE()).getText());
+    public void testCase5() {
+        LOGGER.info("Осуществлена загрузка сайта 'Хабр'");
+        habrCareerPage = habrMainPage.startCareer();
+        LOGGER.info("Верификация текста ('Хабр Карьера') в заголовке - "+ driver.findElement(habrCareerPage.getHABR_CAREER_PAGE_TITLE()).getText().equals("Хабр Карьера"));
+        Assertions.assertEquals(EXPECTED_HABR_CAREER_TITLE, driver.findElement(habrCareerPage.getHABR_CAREER_PAGE_TITLE()).getText());
+        habrCareerLoginPage = habrCareerPage.startSignInCareerProfile();
+        habrCareerPage = habrCareerLoginPage.clickHabrSignInButton(); //Лучше скорее всего просто сделать void метод
+        habrCareerPage.enterCareerProfile();
+        LOGGER.info("Осуществлён вход в профиль 'Хабр Карьера'");
+        LOGGER.info("Верификация успешного входа в заданный профиль - "+ driver.findElement(habrCareerPage.getMY_NAME_IN_PROFILE()).getText().equals("Владислав Гуков"));
+        Assertions.assertEquals(EXPECTED_HABR_CAREER_PROFILE_NAME, driver.findElement(habrCareerPage.getMY_NAME_IN_PROFILE()).getText());
     }
 
     @Test
-    public void testCase4() {
+    public void testCase6() {
         LOGGER.info("Осуществлена загрузка сайта");
         habrMainPage.startSignIn();
         Assertions.assertEquals("Вход", driver.findElement(habrLoginPage.getLOGIN_TITLE()).getText());
