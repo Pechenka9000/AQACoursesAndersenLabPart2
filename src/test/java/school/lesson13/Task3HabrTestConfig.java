@@ -26,7 +26,7 @@ public class Task3HabrTestConfig {
     protected HabrCareerLoginPage habrCareerLoginPage;
     protected HabrCareerPage habrCareerPage;
     protected final String LINK_TITLE_TEXT = "Selenium 2.0 — WebDriver. Впечатления, проблемы и советы по использованию";
-    protected final String EXPECTED_HABR_CAREER_TITLE = "Хабр Карьера";
+    protected final String EXPECTED_LINK3_TITLE = "SQL Fundamentals";
     protected final String EXPECTED_HABR_CAREER_PROFILE_NAME = "Владислав Гуков";
 
     @BeforeClass
@@ -41,6 +41,7 @@ public class Task3HabrTestConfig {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.get(ConfProperties.getProperty("habrWebSite"));
         driver.manage().window().maximize();
+        habrLoginPage = new HabrLoginPage(driver);
     }
 
     @After

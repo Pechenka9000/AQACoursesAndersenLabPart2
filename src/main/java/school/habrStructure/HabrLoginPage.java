@@ -22,7 +22,6 @@ public class HabrLoginPage {
     }
 
     public HabrMainPage loginValidUser(String userEmail, String password) {
-
         driver.findElement(EMAIL_FIELD).click();
         driver.findElement(EMAIL_FIELD).clear();
         driver.findElement(EMAIL_FIELD).sendKeys(userEmail);

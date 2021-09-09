@@ -10,10 +10,9 @@ public class HabrCareerPage {
     private HabrMainPage habrMainPage;
     private static final Logger LOGGER      = LoggerFactory.getLogger(HabrMainPage.class.getName());
     private final String habrCareerPage     = "https://career.habr.com/";
-    private final By HABR_CAREER_PAGE_TITLE = By.xpath("//a[@title='Хабр Карьера']");
     private final By START_CAREER_PROFILE_SIGN_IN = By.xpath("//a[@class='header__auth-link header__sign_in']");
     private final By EDUCATION_BUTTON       = By.xpath("//a[contains(text(),'Образование')]");
-    private final By SEARCHER               = By.xpath("//input[@id='search_courses_q']");
+    private final By EDUCATION_SEARCHER     = By.xpath("//input[@id='search_courses_q']");
     private final By LINK1                  = By.xpath("//a[contains(text(),'Автоматизатор тестирования на Java')]");
     private final By LINK1_TITLE            = By.xpath("//h1[contains(text(),'Автоматизатор тестирования на Java')]");
     private final By LINK2                  = By.xpath("//div[@title='Java-разработчик']");
@@ -24,17 +23,39 @@ public class HabrCareerPage {
     private final By PROFILE_ICON           = By.xpath("//button[@title='Личное меню']");
     private final By MY_PROFILE_BUTTON      = By.xpath("//a[contains(text(),'Ваш профиль')]");
     private final By MY_NAME_IN_PROFILE     = By.xpath("//h1[contains(text(),'Владислав Гуков')]");
+    private final By HABR_CAREER_OUT_BUTON = By.xpath("//button[@class='user_panel__menu-item']");
+
+
+    public HabrCareerPage(WebDriver driver) {
+        this.driver = driver;
+    }
 
     public HabrCareerLoginPage startSignInCareerProfile() {
         driver.findElement(START_CAREER_PROFILE_SIGN_IN).click();
-        return new HabrCareerLoginPage();
+        //driver.switchTo().window(driver.getWindowHandle());
+        return new HabrCareerLoginPage(driver);
     }
 
     public HabrCareerPage enterCareerProfile() {
         driver.findElement(PROFILE_ICON).click();
         driver.findElement(MY_PROFILE_BUTTON).click();
         LOGGER.info("Осуществлен вход в профиль 'Хабр Карьера'");
-        return new HabrCareerPage();
+        return new HabrCareerPage(driver);
+    }
+
+    public HabrCareerPage getEducationLink(String searchQuery, By link) {
+        driver.findElement(EDUCATION_BUTTON).click();
+        LOGGER.info("Открыта вкладка 'Образование'");
+        driver.findElement(EDUCATION_SEARCHER).sendKeys(searchQuery);
+        driver.findElement(LINK3).click();
+        return new HabrCareerPage(driver);
+    }
+
+    public void habrCareerLogOut() {
+        driver.findElement(PROFILE_ICON).click();
+        LOGGER.info("Осуществлён клик по кнопке профиля");
+        driver.findElement(HABR_CAREER_OUT_BUTON).click();
+        LOGGER.info("Осуществлён выход из профиля");
     }
 
     public HabrMainPage getHabrMainPage() {
@@ -45,16 +66,12 @@ public class HabrCareerPage {
         return habrCareerPage;
     }
 
-    public By getHABR_CAREER_PAGE_TITLE() {
-        return HABR_CAREER_PAGE_TITLE;
-    }
-
     public By getEDUCATION_BUTTON() {
         return EDUCATION_BUTTON;
     }
 
-    public By getSEARCHER() {
-        return SEARCHER;
+    public By getEDUCATION_SEARCHER() {
+        return EDUCATION_SEARCHER;
     }
 
     public By getLINK1() {
@@ -87,5 +104,13 @@ public class HabrCareerPage {
 
     public By getMY_NAME_IN_PROFILE() {
         return MY_NAME_IN_PROFILE;
+    }
+
+    public By getPROFILE_ICON() {
+        return PROFILE_ICON;
+    }
+
+    public By getHABR_CAREER_OUT_BUTON() {
+        return HABR_CAREER_OUT_BUTON;
     }
 }

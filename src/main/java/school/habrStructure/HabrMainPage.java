@@ -46,7 +46,7 @@ public class HabrMainPage {
         LOGGER.info("Осуществлено открытие списка сервисов Хабра");
         driver.findElement(CAREER_OPENER).click();
         LOGGER.info("Осуществлён клик по кнопке 'Карьера'");
-        return new HabrCareerPage();
+        return new HabrCareerPage(driver);
     }
 
     public void addPostFromTapeToBookmarks(By link) {
