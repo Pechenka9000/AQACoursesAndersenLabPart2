@@ -1,30 +1,34 @@
-package school.lesson13;
+package school.lesson13.task2;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import school.habrStructure.*;
+import school.lesson13.ConfProperties;
+import school.lesson13.Task3HabrTest;
 
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.fail;
 
-public class Task3HabrTestConfig {
+public class Task2HabrTestConfig {
     protected WebDriver driver;
     protected static final Logger LOGGER = LoggerFactory.getLogger(Task3HabrTest.class.getName());
     private StringBuffer verificationErrors = new StringBuffer();
-    protected HabrLoginPage habrLoginPage;
+    protected HabrPublicationCreator habrPublicationCreator;
     protected HabrMainPage habrMainPage;
-    protected HabrCareerLoginPage habrCareerLoginPage;
-    protected HabrCareerPage habrCareerPage;
-    protected HabrCareerPageActions habrCareerPageActions;
+    protected HabrLoginPage habrLoginPage;
     protected final String expectedLinkTitle = "SQL Fundamentals";
     protected final String expectedHabrCareerProfileName = "Владислав Гуков";
+    protected final String LINK_TITLE_TEXT = "Selenium 2.0 — WebDriver. Впечатления, проблемы и советы по использованию";
+
 
     @BeforeClass
     public static void setupClass() {

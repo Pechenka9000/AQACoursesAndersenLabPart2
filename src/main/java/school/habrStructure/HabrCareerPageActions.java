@@ -1,5 +1,6 @@
 package school.habrStructure;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -35,11 +36,11 @@ public class HabrCareerPageActions extends HabrCareerPage {
         return new HabrCareerPage(driver);
     }
 
-    public HabrCareerPage getEducationLink(String searchQuery, WebElement link) {
+    public HabrCareerPage getEducationLink(String searchQuery, By link) {
         educationButton.click();
         LOGGER.info("Открыта вкладка 'Образование'");
         educationSearcher.sendKeys(searchQuery);
-        link.click();
+        driver.findElement(link).click();
         return new HabrCareerPage(driver);
     }
 

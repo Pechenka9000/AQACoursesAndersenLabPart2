@@ -26,10 +26,6 @@ public class Task3HabrTest extends Task3HabrTestConfig {
         habrCareerLoginPage = habrCareerPageActions.startSignInCareerProfile();
         LOGGER.info("Инициирован вход в профиль 'Хабр Карьера'");
         habrCareerLoginPage.signIn(ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
-        Assertions.assertAll(
-                () -> assertEquals(ConfProperties.getProperty("habrLoginEmail"), driver.findElement(By.xpath(String.format(finalSettingsPage.getXPATH_SELECTOR_FINDER(), finalSettingsPage.getREGION()))).getText()),
-                () -> assertEquals(ConfProperties.getProperty("habrLoginPassword"), driver.findElement(By.xpath(String.format(finalSettingsPage.getXPATH_SELECTOR_FINDER(), finalSettingsPage.getCITY()))).getText())
-        );
         LOGGER.info("Осуществлена верификация введенных данных");
         LOGGER.info("Осуществлён вход в профиль 'Хабр Карьера'");
         LOGGER.info("Верификация успешного входа в заданный профиль - " +
@@ -43,10 +39,10 @@ public class Task3HabrTest extends Task3HabrTestConfig {
         habrCareerPage = habrMainPage.startCareer();
         ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
-        habrCareerLoginPage = habrCareerPage.startSignInCareerProfile();
+        habrCareerLoginPage = habrCareerPageActions.startSignInCareerProfile();
         LOGGER.info("инициализировали логин пейдж");
-        habrCareerPage = habrCareerLoginPage.signIn(habrLoginPage.getEMAIL(), habrLoginPage.getPASSWORD());
-        habrCareerPage.getEducationLink("SQL", habrCareerPage.getLINK3());
+        habrCareerLoginPage.signIn(habrLoginPage.getEMAIL(), habrLoginPage.getPASSWORD());
+        habrCareerPageActions.getEducationLink("SQL", habrCareerPage.getLINK3());
         Assertions.assertEquals(expectedLinkTitle, driver.findElement(habrCareerPage.getLINK3_TITLE()).getText());
         LOGGER.info(String.format("Верификация текста ('%s') в заголовке - ", expectedLinkTitle) +
                 driver.findElement(habrCareerPage.getLINK3_TITLE()).getText().equalsIgnoreCase(expectedLinkTitle));
@@ -55,13 +51,7 @@ public class Task3HabrTest extends Task3HabrTestConfig {
         //habrCareerPage.habrCareerLogOut();
         Assertions.assertTrue(driver.findElement(habrCareerPage.getENTER_CAREER_PROFILE()).isDisplayed());
         LOGGER.info("Осуществлен выход из профиля");
-
     }
 
-    /*
-    ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
-    driver.switchTo().window(tabs2.get(1));
-    driver.close();
-    driver.switchTo().window(tabs2.get(0));
-     */
+
 }

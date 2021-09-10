@@ -33,7 +33,7 @@ public class Task2HabrTestConfig {
         driver.get(habrMainPage.getWEB_SITE_LINK());
         driver.manage().window().maximize();
         habrLoginPage = new HabrLoginPage(driver);
-        habrMainPage = habrLoginPage.loginValidUser(habrLoginPage.getEMAIL(), habrLoginPage.getPASSWORD());
+        habrLoginPage.loginValidUser(habrLoginPage.getEMAIL(), habrLoginPage.getPASSWORD());
     }
 
     @After

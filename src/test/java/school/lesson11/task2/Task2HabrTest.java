@@ -19,7 +19,7 @@ public class Task2HabrTest extends Task2HabrTestCofig {
         LOGGER.info("Осуществлена загрузка сайта");
         habrMainPage.startSignIn();
         LOGGER.info("Верификация текста ('Вход') в заголовке - "+ driver.findElement(habrLoginPage.getLOGIN_TITLE()).getText().equalsIgnoreCase("Вход"));
-        habrMainPage = habrLoginPage.loginValidUser(habrLoginPage.getEMAIL(), habrLoginPage.getPASSWORD());
+        habrLoginPage.loginValidUser(habrLoginPage.getEMAIL(), habrLoginPage.getPASSWORD());
         LOGGER.info("Осуществлена загрузка сайта");
         habrMainPage.findSmthFromSearchRaw("Selenium IDE");
         habrMainPage.addCommentToBookmarks(habrMainPage.getLINK_COMMENT());
@@ -32,7 +32,7 @@ public class Task2HabrTest extends Task2HabrTestCofig {
         habrMainPage.startSignIn();
         Assertions.assertEquals("Вход", driver.findElement(habrLoginPage.getLOGIN_TITLE()).getText());
         LOGGER.info("Верификация текста ('Вход') в заголовке - "+ driver.findElement(habrLoginPage.getLOGIN_TITLE()).getText().equalsIgnoreCase("Вход"));
-        habrMainPage = habrLoginPage.loginValidUser(habrLoginPage.getEMAIL(), habrLoginPage.getPASSWORD());
+        habrLoginPage.loginValidUser(habrLoginPage.getEMAIL(), habrLoginPage.getPASSWORD());
         LOGGER.info("Осуществлена загрузка сайта");
         HabrProfileSettingsPage settingsPage = new HabrProfileSettingsPage(driver);
         habrMainPage.changeAndSaveProfileSettings(settingsPage.getNAME(), settingsPage.getGENDER(), settingsPage.getCOUNTY(), settingsPage.getREGION(), settingsPage.getCITY());

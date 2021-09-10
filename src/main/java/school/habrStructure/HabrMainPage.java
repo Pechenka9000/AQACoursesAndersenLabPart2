@@ -13,6 +13,7 @@ public class HabrMainPage {
     private final String WEB_SITE_LINK  = "https://habr.com/ru/all/";
     private final By PROFILE_EMPTY_ICON = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div[2]/div/div");
     private final By PROFILE_ICON       = By.xpath("//div[@data-test-id='menu-toggle-user']//*[local-name()='svg']");
+    private final By PROFILE_ICON_TITLE = By.xpath("//a[normalize-space()='@pechenka9000']");
     private final By ENTER_ICON         = By.linkText("Войти");
     private final By OUT_ICON           = By.xpath("//a[@class='tm-user-menu__menu-link tm-user-menu__menu-link_grey']");
     private final By TAB_MY_TAPE        = By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div/div/div[1]/div/nav/a[1]");
@@ -23,22 +24,22 @@ public class HabrMainPage {
     private final By LINK_COMMENT       = By.xpath("//article[@id='171703']//a[@class='tm-article-snippet__title-link']");
     private final By LINK_POST          = By.xpath("//span[contains(text(),'ЭТТ, или когда в резюме можно написать, что профес')]");
     private final By LINK_POST_TITLE    = By.xpath("//span[contains(text(),'Selenium 2.0 — WebDriver. Впечатления, проблемы и ')]");
+    private final By NEW_PUBLICATION_ICON = By.xpath("//a[@href='/ru/publication/new/']");
     // new
     private final By HABR_SERVICES_OPENER         = By.xpath("//button[@class='tm-header__dropdown-toggle']");
     private final By CAREER_OPENER         = By.xpath("//a[@href='https://career.habr.com?utm_source=habr&utm_medium=habr_top_panel']");
-
-
 
     public HabrMainPage(WebDriver driver){
         this.driver = driver;
     }
 
-    public void startSignIn() {
+    public HabrLoginPage startSignIn() {
         habrMainPage = new HabrMainPage(driver);
         driver.findElement(PROFILE_EMPTY_ICON).click();
         LOGGER.info("Осуществлён клик по иконке профиля");
         driver.findElement(ENTER_ICON).click();
         LOGGER.info("Осуществлён клик по кнопке 'Войти'");
+        return new HabrLoginPage(driver);
     }
 
     public HabrCareerPageActions startCareer() {
@@ -47,6 +48,11 @@ public class HabrMainPage {
         driver.findElement(CAREER_OPENER).click();
         LOGGER.info("Осуществлён клик по кнопке 'Карьера'");
         return new HabrCareerPageActions(driver);
+    }
+
+    public HabrPublicationCreator createNewPublication() {
+        driver.findElement(NEW_PUBLICATION_ICON).click();
+        return new HabrPublicationCreator(driver);
     }
 
     public void addPostFromTapeToBookmarks(By link) {
@@ -140,5 +146,13 @@ public class HabrMainPage {
 
     public By getCAREER_OPENER() {
         return CAREER_OPENER;
+    }
+
+    public By getPROFILE_ICON() {
+        return PROFILE_ICON;
+    }
+
+    public By getPROFILE_ICON_TITLE() {
+        return PROFILE_ICON_TITLE;
     }
 }

@@ -21,7 +21,7 @@ public class HabrLoginPage {
         this.driver = driver;
     }
 
-    public HabrMainPage loginValidUser(String userEmail, String password) {
+    public void loginValidUser(String userEmail, String password) {
         driver.findElement(EMAIL_FIELD).click();
         driver.findElement(EMAIL_FIELD).clear();
         driver.findElement(EMAIL_FIELD).sendKeys(userEmail);
@@ -30,6 +30,9 @@ public class HabrLoginPage {
         driver.findElement(PASSWORD_FIELD).clear();
         driver.findElement(PASSWORD_FIELD).sendKeys(password);
         LOGGER.info(String.format("Введён пароль - '%s'", password));
+    }
+
+    public HabrMainPage clickSignInButton() {
         driver.findElement(SIGN_IN_BUTTON).click();
         return new HabrMainPage(driver);
     }
@@ -44,5 +47,13 @@ public class HabrLoginPage {
 
     public By getLOGIN_TITLE() {
         return LOGIN_TITLE;
+    }
+
+    public By getEMAIL_FIELD() {
+        return EMAIL_FIELD;
+    }
+
+    public By getPASSWORD_FIELD() {
+        return PASSWORD_FIELD;
     }
 }
