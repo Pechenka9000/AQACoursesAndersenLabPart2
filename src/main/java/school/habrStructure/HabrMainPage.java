@@ -41,12 +41,12 @@ public class HabrMainPage {
         LOGGER.info("Осуществлён клик по кнопке 'Войти'");
     }
 
-    public HabrCareerPage startCareer() {
+    public HabrCareerPageActions startCareer() {
         driver.findElement(HABR_SERVICES_OPENER).click();
         LOGGER.info("Осуществлено открытие списка сервисов Хабра");
         driver.findElement(CAREER_OPENER).click();
         LOGGER.info("Осуществлён клик по кнопке 'Карьера'");
-        return new HabrCareerPage(driver);
+        return new HabrCareerPageActions(driver);
     }
 
     public void addPostFromTapeToBookmarks(By link) {

@@ -8,10 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import school.habrStructure.HabrCareerLoginPage;
-import school.habrStructure.HabrCareerPage;
-import school.habrStructure.HabrLoginPage;
-import school.habrStructure.HabrMainPage;
+import school.habrStructure.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -24,10 +21,9 @@ public class Task3HabrTestConfig {
     protected HabrLoginPage habrLoginPage;
     protected HabrMainPage habrMainPage;
     protected HabrCareerLoginPage habrCareerLoginPage;
-    protected HabrCareerPage habrCareerPage;
-    protected final String LINK_TITLE_TEXT = "Selenium 2.0 — WebDriver. Впечатления, проблемы и советы по использованию";
-    protected final String EXPECTED_LINK3_TITLE = "SQL Fundamentals";
-    protected final String EXPECTED_HABR_CAREER_PROFILE_NAME = "Владислав Гуков";
+    protected HabrCareerPageActions habrCareerPageActions;
+    protected final String expectedLinkTitle = "SQL Fundamentals";
+    protected final String expectedHabrCareerProfileName = "Владислав Гуков";
 
     @BeforeClass
     public static void setupClass() {
