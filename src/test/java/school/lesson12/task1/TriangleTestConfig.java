@@ -13,22 +13,22 @@ public class TriangleTestConfig {
     protected static Triangle wrongTriangle;
     protected  List<Double> expectedTriangleSquares = new ArrayList<>();
     {
-        expectedTriangleSquares.add(12.786476987426987);
-        expectedTriangleSquares.add(18.72047325122951);
-        expectedTriangleSquares.add(3.968626966596886);
+        expectedTriangleSquares.add(14.142135623730951);
+        expectedTriangleSquares.add(20.662465970933866);
+        expectedTriangleSquares.add(4.47213595499958);
     }
 
-    protected  List<Double> expectedTrianglePerimeters = new ArrayList<>();
+    protected  List<Integer> expectedTrianglePerimeters = new ArrayList<>();
     {
-        expectedTrianglePerimeters.add(19.7);
-        expectedTrianglePerimeters.add(21.9);
-        expectedTrianglePerimeters.add(10.0);
+        expectedTrianglePerimeters.add(20);
+        expectedTrianglePerimeters.add(23);
+        expectedTrianglePerimeters.add(10);
     }
 
     @BeforeAll
     public static void setUp() {
         LOGGER = LoggerFactory.getLogger(TriangleTestConfig.class.getName());
         // Инициализация несуществующего треугольника
-        wrongTriangle = new Triangle(2.1, 8.0, 3.2);
+        wrongTriangle = new Triangle(2, 8, 3);
         }
     }

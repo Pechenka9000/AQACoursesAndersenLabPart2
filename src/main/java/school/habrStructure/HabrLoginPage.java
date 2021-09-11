@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 
 public class HabrLoginPage {
     protected WebDriver driver;
-    private final HabrMainPage habrMainPage = new HabrMainPage(driver);
     private static final Logger LOGGER = LoggerFactory.getLogger(HabrLoginPage.class.getName());
     private final By EMAIL_FIELD       = By.id("email_field");
     private final By PASSWORD_FIELD    = By.id("password_field");
@@ -55,5 +54,9 @@ public class HabrLoginPage {
 
     public By getPASSWORD_FIELD() {
         return PASSWORD_FIELD;
+    }
+
+    public By getSIGN_IN_BUTTON() {
+        return SIGN_IN_BUTTON;
     }
 }

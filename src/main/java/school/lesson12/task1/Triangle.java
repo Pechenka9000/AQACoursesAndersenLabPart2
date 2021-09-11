@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Triangle {
-    private double a;
-    private double b;
-    private double c;
+    private int a;
+    private int b;
+    private int c;
 
-    public Triangle(double a, double b, double c) {
+    public Triangle(int a, int b, int c) {
         this.a = a;
         this.b = b;
         this.c = c;
     }
 
-    public static double computePerimeter(Triangle triangle) {
+    public static int computePerimeter(Triangle triangle) {
         return (triangle.a + triangle.b + triangle.c);
     }
 

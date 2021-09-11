@@ -7,18 +7,20 @@ import org.slf4j.LoggerFactory;
 
 public class HabrPublicationCreator {
     protected WebDriver driver;
-    private static final Logger LOGGER  = LoggerFactory.getLogger(HabrMainPage.class.getName());
+    private static final Logger LOGGER  = LoggerFactory.getLogger(HabrPublicationCreator.class.getName());
     private final By ADD_PUBLICATION_TITLE = By.xpath("//div[@class='ProseMirror']");
     private final By EMPTY_PUBLICATION_PARAGRAPH = By.xpath("//div[@class='node node_paragraph is-empty']");
     private final By FILED_PUBLICATION_PARAGRAPH = By.xpath("//div[@class='node node_paragraph']");
     private final By READY_TO_PUBLICATION_BUTTON = By.xpath("//button[contains(text(),'Готово к публикации')]");
     private final By ADD_PUBLICATION_HUBS = By.xpath("//input[@placeholder='Выберите хабы']");
     private final By DESIRED_HUB = By.xpath("//span[contains(text(),'IT-систем *')]");
+    private final By SELECTED_HUB = By.xpath("//div[@class='base-chips__added tm-chips__added base-chips__added_hubs ']");
     private final By TUTORIAL_OPTION = By.xpath("//div[@class='base-checkbox__square tm-checkbox__square base-checkbox__square_istutorial base-checkbox__square_default-icon']");
     private final By ADD_PUBLICATION_KEY_WARDS = By.xpath("//input[@placeholder='Ключевые слова']");
     private final By DESIRED_KEY_WARD = By.xpath("//div[@class='base-chips__suggest tm-chips-outline__suggest base-chips__suggest_tags ']//div[2]");
+    private final By SELECTED_KEY_WARD = By.xpath("//div[@class='base-chips__added tm-chips-outline__added base-chips__added_tags ']");
     private final By ADD_PUBLICATION_TEXT = By.xpath("//div[@class='node node_paragraph is-empty']");
-    private final By PUBLICATION_TEXT = By.xpath("//div[@class='tm-editor__step-2']//div[2]//div[2]");
+    private final By PUBLICATION_TEXT = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[2]/main[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/form[1]/div[1]/div[10]/div[1]/div[1]/div[4]/div[1]/div[2]/div[2]");
     private final By SEND_FOR_MODERATION = By.xpath("//button[contains(text(),'Отправить на модерацию')]");
 
     public HabrPublicationCreator(WebDriver driver) {
@@ -87,4 +89,14 @@ public class HabrPublicationCreator {
     public By getPUBLICATION_TEXT() {
         return PUBLICATION_TEXT;
     }
+
+    public By getSELECTED_HUB() {
+        return SELECTED_HUB;
+    }
+
+    public By getSELECTED_KEY_WARD() {
+        return SELECTED_KEY_WARD;
+    }
+
+
 }

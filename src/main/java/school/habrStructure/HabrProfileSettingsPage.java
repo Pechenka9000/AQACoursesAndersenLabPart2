@@ -7,12 +7,12 @@ import org.slf4j.LoggerFactory;
 
 public class HabrProfileSettingsPage {
     protected WebDriver driver;
+    private static final Logger LOGGER  = LoggerFactory.getLogger(HabrProfileSettingsPage.class.getName());
     private final String NAME   = "Владислав";
     private final String GENDER = "Мужской";
     private final String COUNTY = "Беларусь";
     private final String REGION = "Витебская обл.";
     private final String CITY   = "Полоцк";
-    private final By PROFILE_SETTINGS_BUTTON   = By.xpath("//span[contains(text(),'Настройки профиля')]");
     private final By REAL_NAME_RAW             = By.xpath("//input[@name='fullname']");
     private final By GENDER_SELECTOR           = By.xpath("//select[@name='gender']");
     private final By COUNTRY_SELECTOR          = By.xpath("//select[@name='locationCountryId']");
@@ -23,6 +23,30 @@ public class HabrProfileSettingsPage {
 
     public HabrProfileSettingsPage(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public void changeAndSaveProfileSettings(String name, String gender, String country, String region, String city) {
+        driver.findElement(REAL_NAME_RAW).clear();
+        driver.findElement(REAL_NAME_RAW).sendKeys(name);
+        LOGGER.info(String.format("Введён текст '%s' в поле 'Настоящее имя'", name));
+        driver.findElement(GENDER_SELECTOR).click();
+        LOGGER.info("Осуществлен клик в ячейку 'Пол'");
+        driver.findElement(By.xpath(String.format(XPATH_SELECTOR_FINDER, gender))).click();
+        LOGGER.info(String.format("Выбран пол - '%s'", gender));
+        driver.findElement(COUNTRY_SELECTOR).click();
+        LOGGER.info("Осуществлен клик в ячейку 'Местоположение - страна'");
+        driver.findElement(By.xpath(String.format(XPATH_SELECTOR_FINDER, country))).click();
+        LOGGER.info(String.format("Выбрана страна - '%s'", country));
+        driver.findElement(REGION_SELECTOR).click();
+        LOGGER.info("Осуществлен клик в ячейку 'Местоположение - регион'");
+        driver.findElement(By.xpath(String.format(XPATH_SELECTOR_FINDER, region))).click();
+        LOGGER.info(String.format("Выбран регион - '%s'", region));
+        driver.findElement(CITY_SELECTOR).click();
+        LOGGER.info("Осуществлен клик в ячейку 'Местоположение - город'");
+        driver.findElement(By.xpath(String.format(XPATH_SELECTOR_FINDER, city))).click();
+        LOGGER.info(String.format("Выбран город - '%s'", city));
+        driver.findElement(SAVE_CHANGES_BUTTON).click();
+        LOGGER.info("Осуществлен клик по кнопке 'Сохранить изменения'");
     }
 
     public String getNAME() {
@@ -43,10 +67,6 @@ public class HabrProfileSettingsPage {
 
     public String getCITY() {
         return CITY;
-    }
-
-    public By getPROFILE_SETTINGS_BUTTON() {
-        return PROFILE_SETTINGS_BUTTON;
     }
 
     public By getREAL_NAME_RAW() {

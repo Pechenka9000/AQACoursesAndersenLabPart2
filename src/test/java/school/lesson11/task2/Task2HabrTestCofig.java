@@ -22,6 +22,7 @@ public class Task2HabrTestCofig {
     private StringBuffer verificationErrors = new StringBuffer();
     protected HabrLoginPage habrLoginPage;
     protected HabrMainPage habrMainPage;
+    protected HabrProfileSettingsPage profileSettingsPage;
     protected final String LINK_TITLE_TEXT = "Selenium 2.0 — WebDriver. Впечатления, проблемы и советы по использованию";
 
     @BeforeClass

@@ -4,6 +4,7 @@ import org.junit.*;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import school.habrStructure.HabrProfileSettingsPage;
+import school.lesson13.ConfProperties;
 
 import static org.junit.Assert.assertEquals;
 
@@ -28,21 +29,16 @@ public class Task2HabrTest extends Task2HabrTestCofig {
 
     @Test
     public void testCase4() {
-        LOGGER.info("Осуществлена загрузка сайта");
-        habrMainPage.startSignIn();
-        Assertions.assertEquals("Вход", driver.findElement(habrLoginPage.getLOGIN_TITLE()).getText());
-        LOGGER.info("Верификация текста ('Вход') в заголовке - "+ driver.findElement(habrLoginPage.getLOGIN_TITLE()).getText().equalsIgnoreCase("Вход"));
-        habrLoginPage.loginValidUser(habrLoginPage.getEMAIL(), habrLoginPage.getPASSWORD());
-        LOGGER.info("Осуществлена загрузка сайта");
-        HabrProfileSettingsPage settingsPage = new HabrProfileSettingsPage(driver);
-        habrMainPage.changeAndSaveProfileSettings(settingsPage.getNAME(), settingsPage.getGENDER(), settingsPage.getCOUNTY(), settingsPage.getREGION(), settingsPage.getCITY());
-        settingsPage = new HabrProfileSettingsPage(driver);
-        HabrProfileSettingsPage finalSettingsPage = settingsPage;
+        habrMainPage.logIn(ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
+        profileSettingsPage = habrMainPage.openProfileSettings();
+        profileSettingsPage.changeAndSaveProfileSettings(profileSettingsPage.getNAME(), profileSettingsPage.getGENDER(),
+                profileSettingsPage.getCOUNTY(), profileSettingsPage.getREGION(), profileSettingsPage.getCITY());
         Assertions.assertAll(
-            () -> assertEquals("Мужской", driver.findElement(By.xpath(String.format(finalSettingsPage.getXPATH_SELECTOR_FINDER(), finalSettingsPage.getGENDER()))).getText()),
-            () -> assertEquals("Беларусь", driver.findElement(By.xpath(String.format(finalSettingsPage.getXPATH_SELECTOR_FINDER(), finalSettingsPage.getCOUNTY()))).getText()),
-            () -> assertEquals("Витебская обл.", driver.findElement(By.xpath(String.format(finalSettingsPage.getXPATH_SELECTOR_FINDER(), finalSettingsPage.getREGION()))).getText()),
-            () -> assertEquals("Полоцк", driver.findElement(By.xpath(String.format(finalSettingsPage.getXPATH_SELECTOR_FINDER(), finalSettingsPage.getCITY()))).getText())
+                () -> assertEquals("Владислав", driver.findElement(profileSettingsPage.getREAL_NAME_RAW()).getAttribute("value")),
+                () -> assertEquals("Мужской", driver.findElement(By.xpath(String.format(profileSettingsPage.getXPATH_SELECTOR_FINDER(), profileSettingsPage.getGENDER()))).getText()),
+                () -> assertEquals("Беларусь", driver.findElement(By.xpath(String.format(profileSettingsPage.getXPATH_SELECTOR_FINDER(), profileSettingsPage.getCOUNTY()))).getText()),
+                () -> assertEquals("Витебская обл.", driver.findElement(By.xpath(String.format(profileSettingsPage.getXPATH_SELECTOR_FINDER(), profileSettingsPage.getREGION()))).getText()),
+                () -> assertEquals("Полоцк", driver.findElement(By.xpath(String.format(profileSettingsPage.getXPATH_SELECTOR_FINDER(), profileSettingsPage.getCITY()))).getText())
         );
         LOGGER.info("Осуществлена верификация введенных данных");
         habrMainPage.logOut();

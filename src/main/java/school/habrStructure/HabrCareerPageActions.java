@@ -3,6 +3,7 @@ package school.habrStructure;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class HabrCareerPageActions extends HabrCareerPage {
 
@@ -11,43 +12,48 @@ public class HabrCareerPageActions extends HabrCareerPage {
     }
 
     public void clickEducationButton() {
-        educationButton.click();
+        driver.findElement(EDUCATION_BUTTON).click();
     }
 
     public void sendKeysEducationSearcher(String searchQuery) {
-        educationSearcher.sendKeys(searchQuery);
+        driver.findElement(EDUCATION_SEARCHER).sendKeys(searchQuery);
     }
 
     public void clickEnterCareerProfile() {
-        enterCareerProfile.click();
+        driver.findElement(ENTER_CAREER_PROFILE).click();
     }
 
+    public void enterToMyCareerProfile() {
+        driver.findElement(PROFILE_ICON).click();
+        driver.findElement(MY_PROFILE_BUTTON).click();
+
+    }
 
     public HabrCareerLoginPage startSignInCareerProfile() {
-        startCareerProfileSignIn.click();
+        driver.findElement(START_CAREER_PROFILE_SIGN_IN).click();
         LOGGER.info("Выполнен клик по кнопке 'Войти в профиль Хабр Карьера'");
         return new HabrCareerLoginPage(driver);
     }
 
     public HabrCareerPage enterCareerProfile() {
-        profileIcon.click();
-        myProfileButton.click();
+        driver.findElement(PROFILE_ICON).click();
+        driver.findElement(MY_PROFILE_BUTTON).click();
         LOGGER.info("Осуществлен вход в профиль 'Хабр Карьера'");
         return new HabrCareerPage(driver);
     }
 
     public HabrCareerPage getEducationLink(String searchQuery, By link) {
-        educationButton.click();
+        driver.findElement(EDUCATION_BUTTON).click();
         LOGGER.info("Открыта вкладка 'Образование'");
-        educationSearcher.sendKeys(searchQuery);
+        driver.findElement(EDUCATION_SEARCHER).sendKeys(searchQuery);
         driver.findElement(link).click();
         return new HabrCareerPage(driver);
     }
 
     public void habrCareerLogOut() {
-        profileIcon.click();
+        driver.findElement(PROFILE_ICON).click();
         LOGGER.info("Осуществлён клик по кнопке профиля");
-        habrCareerOutButton.click();
+        driver.findElement(HABR_CAREER_OUT_BUTON).click();
         LOGGER.info("Осуществлён выход из профиля");
     }
 

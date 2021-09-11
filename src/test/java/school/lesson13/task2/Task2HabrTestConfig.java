@@ -4,15 +4,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import school.habrStructure.*;
 import school.lesson13.ConfProperties;
-import school.lesson13.Task3HabrTest;
+import school.lesson13.task3.Task3HabrTest;
 
 import java.util.concurrent.TimeUnit;
 
@@ -25,8 +23,7 @@ public class Task2HabrTestConfig {
     protected HabrPublicationCreator habrPublicationCreator;
     protected HabrMainPage habrMainPage;
     protected HabrLoginPage habrLoginPage;
-    protected final String expectedLinkTitle = "SQL Fundamentals";
-    protected final String expectedHabrCareerProfileName = "Владислав Гуков";
+    protected HabrProfileSettingsPage profileSettingsPage;
     protected final String LINK_TITLE_TEXT = "Selenium 2.0 — WebDriver. Впечатления, проблемы и советы по использованию";
 
 

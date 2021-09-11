@@ -1,10 +1,8 @@
-package school.lesson13;
+package school.lesson13.task3;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.interactions.Actions;
-import school.habrStructure.HabrProfileSettingsPage;
+import school.lesson13.ConfProperties;
 
 import java.util.ArrayList;
 
@@ -12,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Тестирование функционала сайта "https://habr.com/ru/all/" представлено четырьмя test-case-ами;
- * Test-case2 и Test-case4 находятся по ссылке:
+ * Test-case5 и Test-case6 находятся по ссылке:
  * https://docs.google.com/document/d/14p2rgzeft96fiHZvV4V5nWB2sE_I9dd-dLs-68lmOtw/edit?usp=sharing
  */
 public class Task3HabrTest extends Task3HabrTestConfig {
@@ -25,33 +23,36 @@ public class Task3HabrTest extends Task3HabrTestConfig {
         driver.switchTo().window(tabs2.get(1));
         habrCareerLoginPage = habrCareerPageActions.startSignInCareerProfile();
         LOGGER.info("Инициирован вход в профиль 'Хабр Карьера'");
-        habrCareerLoginPage.signIn(ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
+        habrCareerLoginPage.loginValidUser(ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
+        Assertions.assertAll(
+                () -> assertEquals(ConfProperties.getProperty("habrLoginEmail"), driver.findElement(habrCareerLoginPage.getEMAIL_FIELD()).getAttribute("value")),
+                () -> assertEquals(ConfProperties.getProperty("habrLoginPassword"), driver.findElement(habrCareerLoginPage.getPASSWORD_FIELD()).getAttribute("value"))
+        );
         LOGGER.info("Осуществлена верификация введенных данных");
+        habrCareerLoginPage.clickSignInButton();
         LOGGER.info("Осуществлён вход в профиль 'Хабр Карьера'");
+        habrCareerPageActions.enterToMyCareerProfile();
         LOGGER.info("Верификация успешного входа в заданный профиль - " +
-                driver.findElement(habrCareerPage.getMY_NAME_IN_PROFILE()).getText().equals(expectedHabrCareerProfileName));
-        Assertions.assertEquals(expectedHabrCareerProfileName, driver.findElement(habrCareerPage.getMY_NAME_IN_PROFILE()).getText());
+                driver.findElement(habrCareerPage.getMY_NAME_IN_PROFILE()).getText().equals(EXPECTED_HABR_CAREER_PROFILE_NAME));
+        Assertions.assertEquals(EXPECTED_HABR_CAREER_PROFILE_NAME, driver.findElement(habrCareerPage.getMY_NAME_IN_PROFILE()).getText());
     }
 
     @Test
     public void testCase6() {
         LOGGER.info("Осуществлена загрузка сайта");
-        habrCareerPage = habrMainPage.startCareer();
+        habrCareerPageActions = habrMainPage.startCareer();
         ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
         habrCareerLoginPage = habrCareerPageActions.startSignInCareerProfile();
-        LOGGER.info("инициализировали логин пейдж");
-        habrCareerLoginPage.signIn(habrLoginPage.getEMAIL(), habrLoginPage.getPASSWORD());
+        LOGGER.info("Инициирован вход в профиль 'Хабр Карьера'");
+        habrCareerLoginPage.loginValidUser(ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
+        habrCareerLoginPage.clickSignInButton();
         habrCareerPageActions.getEducationLink("SQL", habrCareerPage.getLINK3());
-        Assertions.assertEquals(expectedLinkTitle, driver.findElement(habrCareerPage.getLINK3_TITLE()).getText());
-        LOGGER.info(String.format("Верификация текста ('%s') в заголовке - ", expectedLinkTitle) +
-                driver.findElement(habrCareerPage.getLINK3_TITLE()).getText().equalsIgnoreCase(expectedLinkTitle));
-        new Actions(driver).click(driver.findElement(habrCareerPage.getPROFILE_ICON()))
-                .click(driver.findElement(habrCareerPage.getHABR_CAREER_OUT_BUTON())).build().perform();
-        //habrCareerPage.habrCareerLogOut();
+        Assertions.assertEquals(EXPECTED_LINK_TITLE, driver.findElement(habrCareerPage.getLINK_TITLE()).getText());
+        LOGGER.info(String.format("Верификация текста ('%s') в заголовке - ", EXPECTED_LINK_TITLE) +
+                driver.findElement(habrCareerPage.getLINK_TITLE()).getText().equalsIgnoreCase(EXPECTED_LINK_TITLE));
+        habrCareerPageActions.habrCareerLogOut();
         Assertions.assertTrue(driver.findElement(habrCareerPage.getENTER_CAREER_PROFILE()).isDisplayed());
         LOGGER.info("Осуществлен выход из профиля");
     }
-
-
 }

@@ -10,12 +10,12 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Тестирование функционала сайта "https://habr.com/ru/all/" представлено четырьмя test-case-ами;
- * Test-case2 и Test-case4 находятся по ссылке:
+ * Test-cases находятся по ссылке:
  * https://docs.google.com/document/d/14p2rgzeft96fiHZvV4V5nWB2sE_I9dd-dLs-68lmOtw/edit?usp=sharing
  */
 public class Task2HabrTest extends Task2HabrTestConfig {
 
-    @org.junit.jupiter.api.Test
+    @Test
     public void testCase1() {
         LOGGER.info("Осуществлена загрузка сайта");
         habrLoginPage = habrMainPage.startSignIn();
@@ -35,14 +35,16 @@ public class Task2HabrTest extends Task2HabrTestConfig {
 
     @Test
     public void testCase2() {
+        habrMainPage.logIn(ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
         habrMainPage.findSmthFromSearchRaw("Selenium IDE");
         habrMainPage.addCommentToBookmarks(habrMainPage.getLINK_COMMENT());
+        LOGGER.info("Верификация заголовка в искомом комментарии " + driver.findElement(habrMainPage.getLINK_POST_TITLE()).getText().equalsIgnoreCase(LINK_TITLE_TEXT));
         Assertions.assertEquals(LINK_TITLE_TEXT, driver.findElement(habrMainPage.getLINK_POST_TITLE()).getText());
     }
 
     @Test
     public void testCase3() {
-        testCase1();
+        habrMainPage.logIn(ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
         habrPublicationCreator = habrMainPage.createNewPublication();
         habrPublicationCreator.createPublicationStep1("Моя будущая публикация", "текст внутри публикации");
         LOGGER.info("Введен заголовок публикации");
@@ -51,32 +53,28 @@ public class Task2HabrTest extends Task2HabrTestConfig {
         habrPublicationCreator.createPublicationStartStep2();
         habrPublicationCreator.createPublicationStep2("тестирование", "текст внутри публикации");
         Assertions.assertAll(
-                () -> assertEquals("Тестирование IT-систем *", driver.findElement(habrPublicationCreator.getADD_PUBLICATION_HUBS()).getText()),
-                () -> assertEquals("тестирование", driver.findElement(habrPublicationCreator.getADD_PUBLICATION_KEY_WARDS()).getText()),
-                () -> assertEquals("текст внутри публикации", driver.findElement(habrPublicationCreator.getPUBLICATION_TEXT()).getAttribute("value"))
+                () -> assertEquals("Тестирование IT-систем *", driver.findElement(habrPublicationCreator.getSELECTED_HUB()).getText()),
+                () -> assertEquals("тестирование", driver.findElement(habrPublicationCreator.getSELECTED_KEY_WARD()).getText()),
+                () -> assertEquals("текст внутри публикации", driver.findElement(habrPublicationCreator.getPUBLICATION_TEXT()).getText())
         );
         LOGGER.info("Произведена верификация введенных данных в публикации");
+        LOGGER.info("Состояние кнопки 'Отправить на модерацию' - " + driver.findElement(habrPublicationCreator.getSEND_FOR_MODERATION()).isEnabled());
+        Assertions.assertTrue(driver.findElement(habrPublicationCreator.getSEND_FOR_MODERATION()).isEnabled());
         habrPublicationCreator.createPublicationCompletion();
     }
 
     @Test
     public void testCase4() {
-        testCase1();
-        LOGGER.info("Осуществлена загрузка сайта");
-        habrMainPage.startSignIn();
-        Assertions.assertEquals("Вход", driver.findElement(habrLoginPage.getLOGIN_TITLE()).getText());
-        LOGGER.info("Верификация текста ('Вход') в заголовке - "+ driver.findElement(habrLoginPage.getLOGIN_TITLE()).getText().equalsIgnoreCase("Вход"));
-        habrLoginPage.loginValidUser(habrLoginPage.getEMAIL(), habrLoginPage.getPASSWORD());
-        LOGGER.info("Осуществлена загрузка сайта");
-        HabrProfileSettingsPage settingsPage = new HabrProfileSettingsPage(driver);
-        habrMainPage.changeAndSaveProfileSettings(settingsPage.getNAME(), settingsPage.getGENDER(), settingsPage.getCOUNTY(), settingsPage.getREGION(), settingsPage.getCITY());
-        settingsPage = new HabrProfileSettingsPage(driver);
-        HabrProfileSettingsPage finalSettingsPage = settingsPage;
+        habrMainPage.logIn(ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
+        profileSettingsPage = habrMainPage.openProfileSettings();
+        profileSettingsPage.changeAndSaveProfileSettings(profileSettingsPage.getNAME(), profileSettingsPage.getGENDER(),
+                profileSettingsPage.getCOUNTY(), profileSettingsPage.getREGION(), profileSettingsPage.getCITY());
         Assertions.assertAll(
-            () -> assertEquals("Мужской", driver.findElement(By.xpath(String.format(finalSettingsPage.getXPATH_SELECTOR_FINDER(), finalSettingsPage.getGENDER()))).getText()),
-            () -> assertEquals("Беларусь", driver.findElement(By.xpath(String.format(finalSettingsPage.getXPATH_SELECTOR_FINDER(), finalSettingsPage.getCOUNTY()))).getText()),
-            () -> assertEquals("Витебская обл.", driver.findElement(By.xpath(String.format(finalSettingsPage.getXPATH_SELECTOR_FINDER(), finalSettingsPage.getREGION()))).getText()),
-            () -> assertEquals("Полоцк", driver.findElement(By.xpath(String.format(finalSettingsPage.getXPATH_SELECTOR_FINDER(), finalSettingsPage.getCITY()))).getText())
+            () -> assertEquals("Владислав", driver.findElement(profileSettingsPage.getREAL_NAME_RAW()).getAttribute("value")),
+            () -> assertEquals("Мужской", driver.findElement(By.xpath(String.format(profileSettingsPage.getXPATH_SELECTOR_FINDER(), profileSettingsPage.getGENDER()))).getText()),
+            () -> assertEquals("Беларусь", driver.findElement(By.xpath(String.format(profileSettingsPage.getXPATH_SELECTOR_FINDER(), profileSettingsPage.getCOUNTY()))).getText()),
+            () -> assertEquals("Витебская обл.", driver.findElement(By.xpath(String.format(profileSettingsPage.getXPATH_SELECTOR_FINDER(), profileSettingsPage.getREGION()))).getText()),
+            () -> assertEquals("Полоцк", driver.findElement(By.xpath(String.format(profileSettingsPage.getXPATH_SELECTOR_FINDER(), profileSettingsPage.getCITY()))).getText())
         );
         LOGGER.info("Осуществлена верификация введенных данных");
         habrMainPage.logOut();
