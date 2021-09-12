@@ -20,10 +20,10 @@ public class Task2HabrTestConfig {
     protected WebDriver driver;
     protected static final Logger LOGGER = LoggerFactory.getLogger(Task3HabrTest.class.getName());
     private StringBuffer verificationErrors = new StringBuffer();
-    protected HabrPublicationCreator habrPublicationCreator;
-    protected HabrMainPage habrMainPage;
-    protected HabrLoginPage habrLoginPage;
-    protected HabrProfileSettingsPage profileSettingsPage;
+    protected HabrPublicationCreatorActions habrPublicationCreatorActions;
+    protected HabrMainPageActions habrMainPageActions;
+    protected HabrLoginPageActions habrLoginPageActions;
+    protected HabrProfileSettingsPageActions profileSettingsPageActions;
     protected final String LINK_TITLE_TEXT = "Selenium 2.0 — WebDriver. Впечатления, проблемы и советы по использованию";
 
 
@@ -35,11 +35,12 @@ public class Task2HabrTestConfig {
     @Before
     public void setUp() {
         driver = new ChromeDriver();
-        habrMainPage = new HabrMainPage(driver);
+        habrMainPageActions = new HabrMainPageActions(driver);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.get(ConfProperties.getProperty("habrWebSite"));
         driver.manage().window().maximize();
-        habrLoginPage = new HabrLoginPage(driver);
+        habrLoginPageActions = new HabrLoginPageActions(driver);
+        habrPublicationCreatorActions = new HabrPublicationCreatorActions(driver);
     }
 
     @After

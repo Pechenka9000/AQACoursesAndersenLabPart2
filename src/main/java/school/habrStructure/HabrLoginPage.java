@@ -5,58 +5,13 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 public class HabrLoginPage {
-    protected WebDriver driver;
-    private static final Logger LOGGER = LoggerFactory.getLogger(HabrLoginPage.class.getName());
-    private final By EMAIL_FIELD       = By.id("email_field");
-    private final By PASSWORD_FIELD    = By.id("password_field");
-    private final By SIGN_IN_BUTTON    = By.xpath("//*[@id=\"login_form\"]/fieldset/div[4]/button");
-    private final By LOGIN_TITLE       = By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='E-mail'])[1]/preceding::div[1]");
-    private final String EMAIL         = "pechenka9000@gmail.com";
-    private final String PASSWORD      = "Zetju2mkyv";
-
-    public HabrLoginPage(WebDriver driver) {
-        this.driver = driver;
-    }
-
-    public void loginValidUser(String userEmail, String password) {
-        driver.findElement(EMAIL_FIELD).click();
-        driver.findElement(EMAIL_FIELD).clear();
-        driver.findElement(EMAIL_FIELD).sendKeys(userEmail);
-        LOGGER.info(String.format("Введён @email - '%s'", userEmail));
-        driver.findElement(PASSWORD_FIELD).click();
-        driver.findElement(PASSWORD_FIELD).clear();
-        driver.findElement(PASSWORD_FIELD).sendKeys(password);
-        LOGGER.info(String.format("Введён пароль - '%s'", password));
-    }
-
-    public HabrMainPage clickSignInButton() {
-        driver.findElement(SIGN_IN_BUTTON).click();
-        return new HabrMainPage(driver);
-    }
-
-    public String getEMAIL() {
-        return EMAIL;
-    }
-
-    public String getPASSWORD() {
-        return PASSWORD;
-    }
-
-    public By getLOGIN_TITLE() {
-        return LOGIN_TITLE;
-    }
-
-    public By getEMAIL_FIELD() {
-        return EMAIL_FIELD;
-    }
-
-    public By getPASSWORD_FIELD() {
-        return PASSWORD_FIELD;
-    }
-
-    public By getSIGN_IN_BUTTON() {
-        return SIGN_IN_BUTTON;
-    }
+    protected static WebDriver driver;
+    protected static final Logger LOGGER = LoggerFactory.getLogger(HabrLoginPage.class.getName());
+    public static final By EMAIL_FIELD       = By.id("email_field");
+    public static final By PASSWORD_FIELD    = By.id("password_field");
+    protected static final By SIGN_IN_BUTTON    = By.xpath("//*[@id=\"login_form\"]/fieldset/div[4]/button");
+    public static final By LOGIN_TITLE       = By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='E-mail'])[1]/preceding::div[1]");
+    protected static final String EMAIL         = "pechenka9000@gmail.com";
+    protected static final String PASSWORD      = "Zetju2mkyv";
 }

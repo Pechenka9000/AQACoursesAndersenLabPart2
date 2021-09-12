@@ -1,4 +1,4 @@
-package school.lesson11.task1;
+package school.lesson14.crmGeekbrainsTests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
@@ -9,17 +9,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import school.lesson14.ConfProperties;
-import school.lesson14.crmGeekbrainsStructure.CreateContactFacePageActions;
-import school.lesson14.crmGeekbrainsStructure.CreateProjectPageActions;
-import school.lesson14.crmGeekbrainsStructure.CrmLoginPageActions;
-import school.lesson14.crmGeekbrainsStructure.CrmMainPageActions;
-import school.lesson14.crmGeekbrainsTests.CRMGeekbrainsTest;
+import school.lesson14.crmGeekbrainsStructure.*;
 
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.fail;
 
-public class Task1CRMTestConfig {
+public class CRMGeekbrainsTestConfig {
     protected WebDriver driver;
     protected static final Logger LOGGER = LoggerFactory.getLogger(CRMGeekbrainsTest.class.getName());
     private StringBuffer verificationErrors = new StringBuffer();

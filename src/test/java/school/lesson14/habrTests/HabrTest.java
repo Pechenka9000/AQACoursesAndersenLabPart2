@@ -1,10 +1,12 @@
-package school.lesson13.task2;
+package school.lesson14.habrTests;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import school.habrStructure.*;
 import school.lesson14.ConfProperties;
+
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,17 +15,17 @@ import static org.junit.Assert.assertEquals;
  * Test-cases находятся по ссылке:
  * https://docs.google.com/document/d/14p2rgzeft96fiHZvV4V5nWB2sE_I9dd-dLs-68lmOtw/edit?usp=sharing
  */
-public class Task2HabrTest extends Task2HabrTestConfig {
+public class HabrTest extends HabrTestConfig {
 
     @Test
     public void testCase1() {
         LOGGER.info("Осуществлена загрузка сайта");
         HabrMainPageActions.startSignIn();
-        HabrLoginPageActions.loginValidUser(school.lesson14.ConfProperties.getProperty("habrLoginEmail"), school.lesson14.ConfProperties.getProperty("habrLoginPassword"));
+        HabrLoginPageActions.loginValidUser(ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
         Assertions.assertAll(
                 () -> assertEquals("Вход", driver.findElement(HabrLoginPage.LOGIN_TITLE).getText()),
-                () -> assertEquals(school.lesson14.ConfProperties.getProperty("habrLoginEmail"), driver.findElement(HabrLoginPage.EMAIL_FIELD).getAttribute("value")),
-                () -> assertEquals(school.lesson14.ConfProperties.getProperty("habrLoginPassword"), driver.findElement(HabrLoginPage.PASSWORD_FIELD).getAttribute("value"))
+                () -> assertEquals(ConfProperties.getProperty("habrLoginEmail"), driver.findElement(HabrLoginPage.EMAIL_FIELD).getAttribute("value")),
+                () -> assertEquals(ConfProperties.getProperty("habrLoginPassword"), driver.findElement(HabrLoginPage.PASSWORD_FIELD).getAttribute("value"))
         );
         LOGGER.info("Произведена верификация введенных данных");
         HabrLoginPageActions.clickSignInButton();
@@ -35,7 +37,7 @@ public class Task2HabrTest extends Task2HabrTestConfig {
 
     @Test
     public void testCase2() {
-        HabrMainPageActions.logIn(school.lesson14.ConfProperties.getProperty("habrLoginEmail"), school.lesson14.ConfProperties.getProperty("habrLoginPassword"));
+        HabrMainPageActions.logIn(ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
         HabrMainPageActions.findSmthFromSearchRaw("Selenium IDE");
         HabrMainPageActions.addCommentToBookmarks(HabrMainPage.LINK_COMMENT);
         LOGGER.info("Верификация заголовка в искомом комментарии " + driver.findElement(HabrMainPage.LINK_POST_TITLE).getText().equalsIgnoreCase(LINK_TITLE_TEXT));
@@ -44,7 +46,7 @@ public class Task2HabrTest extends Task2HabrTestConfig {
 
     @Test
     public void testCase3() {
-        HabrMainPageActions.logIn(school.lesson14.ConfProperties.getProperty("habrLoginEmail"), school.lesson14.ConfProperties.getProperty("habrLoginPassword"));
+        HabrMainPageActions.logIn(ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
         HabrMainPageActions.createNewPublication();
         HabrPublicationCreatorActions.createPublicationStep1("Моя будущая публикация", "текст внутри публикации");
         LOGGER.info("Введен заголовок публикации");
@@ -65,7 +67,7 @@ public class Task2HabrTest extends Task2HabrTestConfig {
 
     @Test
     public void testCase4() {
-        HabrMainPageActions.logIn(school.lesson14.ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
+        HabrMainPageActions.logIn(ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
         HabrMainPageActions.openProfileSettings();
         HabrProfileSettingsPageActions.changeAndSaveProfileSettings(HabrProfileSettingsPage.NAME, HabrProfileSettingsPage.GENDER,
                 HabrProfileSettingsPage.COUNTY, HabrProfileSettingsPage.REGION, HabrProfileSettingsPage.CITY);
@@ -79,5 +81,45 @@ public class Task2HabrTest extends Task2HabrTestConfig {
         LOGGER.info("Осуществлена верификация введенных данных");
         HabrMainPageActions.logOut();
         LOGGER.info("Осуществлен выход из профиля");
+    }
+
+    @Test
+    public void testCase5() {
+        LOGGER.info("Осуществлена загрузка сайта 'Хабр'");
+        HabrMainPageActions.startCareer();
+        ArrayList<String> tabs2 = new ArrayList<> (driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        HabrCareerPageActions.startSignInCareerProfile();
+        LOGGER.info("Инициирован вход в профиль 'Хабр Карьера'");
+        HabrCareerLoginPageActions.loginValidUser(ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
+        Assertions.assertAll(
+                () -> assertEquals(ConfProperties.getProperty("habrLoginEmail"), driver.findElement(HabrCareerLoginPage.EMAIL_FIELD).getAttribute("value")),
+                () -> assertEquals(ConfProperties.getProperty("habrLoginPassword"), driver.findElement(HabrCareerLoginPage.PASSWORD_FIELD).getAttribute("value"))
+        );
+        LOGGER.info("Осуществлена верификация введенных данных");
+        HabrCareerLoginPageActions.clickSignInButton();
+        LOGGER.info("Осуществлён вход в профиль 'Хабр Карьера'");
+        HabrCareerPageActions.enterToMyCareerProfile();
+        LOGGER.info("Верификация успешного входа в заданный профиль - " +
+                driver.findElement(HabrCareerPage.MY_NAME_IN_PROFILE).getText().equals(EXPECTED_HABR_CAREER_PROFILE_NAME));
+        Assertions.assertEquals(EXPECTED_HABR_CAREER_PROFILE_NAME, driver.findElement(HabrCareerPage.MY_NAME_IN_PROFILE).getText());
+    }
+
+    @Test
+    public void testCase6() {
+        LOGGER.info("Осуществлена загрузка сайта");
+        HabrMainPageActions.startCareer();
+        ArrayList<String> tabs2 = new ArrayList<> (driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        HabrCareerPageActions.startSignInCareerProfile();
+        LOGGER.info("Инициирован вход в профиль 'Хабр Карьера'");
+        HabrCareerLoginPageActions.loginValidUser(ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
+        HabrCareerLoginPageActions.clickSignInButton();
+        HabrCareerPageActions.getEducationLink("SQL", HabrCareerPage.LINK);
+        Assertions.assertEquals(EXPECTED_LINK_TITLE, driver.findElement(HabrCareerPage.LINK_TITLE).getText());
+        LOGGER.info(String.format("Верификация текста ('%s') в заголовке - ", EXPECTED_LINK_TITLE) +
+                driver.findElement(HabrCareerPage.LINK_TITLE).getText().equalsIgnoreCase(EXPECTED_LINK_TITLE));
+        HabrCareerPageActions.habrCareerLogOut();
+        Assertions.assertTrue(driver.findElement(HabrCareerPage.ENTER_CAREER_PROFILE).isDisplayed());
     }
 }

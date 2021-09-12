@@ -1,4 +1,4 @@
-package school.lesson13.task1;
+package school.lesson14.crmGeekbrainsTests;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -12,17 +12,17 @@ import static org.junit.Assert.assertEquals;
  * Test-case1 и Test-case2 находится по ссылке:
  * https://docs.google.com/document/d/1RLTKJN8-8njE2UeEcKY6aDoBTpXwvgskoPZLPCT4iY8/edit?usp=sharing
  */
-public class Task1CRMTest extends Task1CRMTestConfig {
+public class CRMGeekbrainsTest extends CRMGeekbrainsTestConfig {
 
     @Test
     public void testCase1() {
         LOGGER.info("Осуществлена загрузка сайта");
         LOGGER.info("Верификация текста ('Логин') в заголовке - "+ driver.findElement(CrmLoginPage.LOGIN_PAGE_TITLE).getText().equalsIgnoreCase("Логин"));
-        CrmLoginPageActions.loginValidUser(school.lesson14.ConfProperties.getProperty("crmGeekbrainsLogin"), school.lesson14.ConfProperties.getProperty("crmGeekbrainsPassword"));
+        CrmLoginPageActions.loginValidUser(ConfProperties.getProperty("crmGeekbrainsLogin"), ConfProperties.getProperty("crmGeekbrainsPassword"));
         Assertions.assertAll(
                 () -> assertEquals("Логин", driver.findElement(CrmLoginPage.LOGIN_PAGE_TITLE).getText()),
-                () -> assertEquals(school.lesson14.ConfProperties.getProperty("crmGeekbrainsLogin"), driver.findElement(CrmLoginPage.LOGIN_FIELD).getText()),
-                () -> assertEquals(school.lesson14.ConfProperties.getProperty("crmGeekbrainsPassword"), driver.findElement(CrmLoginPage.PASSWORD_FIELD).getText())
+                () -> assertEquals(ConfProperties.getProperty("crmGeekbrainsLogin"), driver.findElement(CrmLoginPage.LOGIN_FIELD).getText()),
+                () -> assertEquals(ConfProperties.getProperty("crmGeekbrainsPassword"), driver.findElement(CrmLoginPage.PASSWORD_FIELD).getText())
         );
         LOGGER.info("Осуществлена верификация введенных данных");
         CrmLoginPageActions.signIn();
@@ -47,7 +47,7 @@ public class Task1CRMTest extends Task1CRMTestConfig {
         LOGGER.info("Осуществлена загрузка сайта");
         Assertions.assertEquals("Логин", driver.findElement(CrmLoginPage.LOGIN_PAGE_TITLE).getText());
         LOGGER.info("Верификация текста ('Логин') в заголовке - "+ driver.findElement(CrmLoginPage.LOGIN_PAGE_TITLE).getText().equalsIgnoreCase("Логин"));
-        CrmLoginPageActions.loginValidUser(school.lesson14.ConfProperties.getProperty("crmGeekbrainsLogin"), ConfProperties.getProperty("crmGeekbrainsPassword"));
+        CrmLoginPageActions.loginValidUser(ConfProperties.getProperty("crmGeekbrainsLogin"), ConfProperties.getProperty("crmGeekbrainsPassword"));
         CrmLoginPageActions.signIn();
         CrmMainPageActions.createContactFace();
         Assertions.assertEquals("Создать контактное лицо", driver.findElement(CreateContactFacePage.CREATE_CONTACT_TITLE).getText());

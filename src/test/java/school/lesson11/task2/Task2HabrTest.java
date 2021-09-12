@@ -3,7 +3,10 @@ package school.lesson11.task2;
 import org.junit.*;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
+import school.habrStructure.HabrMainPage;
+import school.habrStructure.HabrMainPageActions;
 import school.habrStructure.HabrProfileSettingsPage;
+import school.habrStructure.HabrProfileSettingsPageActions;
 import school.lesson13.ConfProperties;
 
 import static org.junit.Assert.assertEquals;
@@ -17,31 +20,28 @@ public class Task2HabrTest extends Task2HabrTestCofig {
 
     @Test
     public void testCase2() {
-        LOGGER.info("Осуществлена загрузка сайта");
-        habrMainPage.startSignIn();
-        LOGGER.info("Верификация текста ('Вход') в заголовке - "+ driver.findElement(habrLoginPage.getLOGIN_TITLE()).getText().equalsIgnoreCase("Вход"));
-        habrLoginPage.loginValidUser(habrLoginPage.getEMAIL(), habrLoginPage.getPASSWORD());
-        LOGGER.info("Осуществлена загрузка сайта");
-        habrMainPage.findSmthFromSearchRaw("Selenium IDE");
-        habrMainPage.addCommentToBookmarks(habrMainPage.getLINK_COMMENT());
-        Assertions.assertEquals(LINK_TITLE_TEXT, driver.findElement(habrMainPage.getLINK_POST_TITLE()).getText());
+        HabrMainPageActions.logIn(school.lesson14.ConfProperties.getProperty("habrLoginEmail"), school.lesson14.ConfProperties.getProperty("habrLoginPassword"));
+        HabrMainPageActions.findSmthFromSearchRaw("Selenium IDE");
+        HabrMainPageActions.addCommentToBookmarks(HabrMainPage.LINK_COMMENT);
+        LOGGER.info("Верификация заголовка в искомом комментарии " + driver.findElement(HabrMainPage.LINK_POST_TITLE).getText().equalsIgnoreCase(LINK_TITLE_TEXT));
+        Assertions.assertEquals(LINK_TITLE_TEXT, driver.findElement(HabrMainPage.LINK_POST_TITLE).getText());
     }
 
     @Test
     public void testCase4() {
-        habrMainPage.logIn(ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
-        profileSettingsPage = habrMainPage.openProfileSettings();
-        profileSettingsPage.changeAndSaveProfileSettings(profileSettingsPage.getNAME(), profileSettingsPage.getGENDER(),
-                profileSettingsPage.getCOUNTY(), profileSettingsPage.getREGION(), profileSettingsPage.getCITY());
+        HabrMainPageActions.logIn(school.lesson14.ConfProperties.getProperty("habrLoginEmail"), school.lesson14.ConfProperties.getProperty("habrLoginPassword"));
+        HabrMainPageActions.openProfileSettings();
+        HabrProfileSettingsPageActions.changeAndSaveProfileSettings(HabrProfileSettingsPage.NAME, HabrProfileSettingsPage.GENDER,
+                HabrProfileSettingsPage.COUNTY, HabrProfileSettingsPage.REGION, HabrProfileSettingsPage.CITY);
         Assertions.assertAll(
-                () -> assertEquals("Владислав", driver.findElement(profileSettingsPage.getREAL_NAME_RAW()).getAttribute("value")),
-                () -> assertEquals("Мужской", driver.findElement(By.xpath(String.format(profileSettingsPage.getXPATH_SELECTOR_FINDER(), profileSettingsPage.getGENDER()))).getText()),
-                () -> assertEquals("Беларусь", driver.findElement(By.xpath(String.format(profileSettingsPage.getXPATH_SELECTOR_FINDER(), profileSettingsPage.getCOUNTY()))).getText()),
-                () -> assertEquals("Витебская обл.", driver.findElement(By.xpath(String.format(profileSettingsPage.getXPATH_SELECTOR_FINDER(), profileSettingsPage.getREGION()))).getText()),
-                () -> assertEquals("Полоцк", driver.findElement(By.xpath(String.format(profileSettingsPage.getXPATH_SELECTOR_FINDER(), profileSettingsPage.getCITY()))).getText())
+                () -> assertEquals("Владислав", driver.findElement(HabrProfileSettingsPage.REAL_NAME_RAW).getAttribute("value")),
+                () -> assertEquals("Мужской", driver.findElement(By.xpath(String.format(HabrProfileSettingsPage.XPATH_SELECTOR_FINDER, HabrProfileSettingsPage.GENDER))).getText()),
+                () -> assertEquals("Беларусь", driver.findElement(By.xpath(String.format(HabrProfileSettingsPage.XPATH_SELECTOR_FINDER, HabrProfileSettingsPage.COUNTY))).getText()),
+                () -> assertEquals("Витебская обл.", driver.findElement(By.xpath(String.format(HabrProfileSettingsPage.XPATH_SELECTOR_FINDER, HabrProfileSettingsPage.REGION))).getText()),
+                () -> assertEquals("Полоцк", driver.findElement(By.xpath(String.format(HabrProfileSettingsPage.XPATH_SELECTOR_FINDER, HabrProfileSettingsPage.CITY))).getText())
         );
         LOGGER.info("Осуществлена верификация введенных данных");
-        habrMainPage.logOut();
+        HabrMainPageActions.logOut();
         LOGGER.info("Осуществлен выход из профиля");
     }
 }

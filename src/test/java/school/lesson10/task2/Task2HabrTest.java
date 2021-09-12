@@ -1,6 +1,8 @@
 package school.lesson10.task2;
 
 import org.junit.Test;
+import school.habrStructure.HabrMainPage;
+import school.habrStructure.HabrMainPageActions;
 
 /**
  * Тестирование функционала сайта "https://habr.com/ru/all/" представлено одним test-case-ом;
@@ -12,8 +14,8 @@ public class Task2HabrTest extends Task2HabrTestConfig{
     @Test
     public void testTask2() {
         LOGGER.info("Осуществлена загрузка сайта");
-        habrMainPage.addPostFromTapeToBookmarks(habrMainPage.getLINK_POST());
-        habrMainPage.logOut();
+        HabrMainPageActions.addPostFromTapeToBookmarks(HabrMainPage.LINK_POST);
+        HabrMainPageActions.logOut();
     }
 }
 
