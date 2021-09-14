@@ -19,12 +19,8 @@ public class CRMGeekbrainsTest extends CRMGeekbrainsTestConfig {
         LOGGER.info("Осуществлена загрузка сайта");
         LOGGER.info("Верификация текста ('Логин') в заголовке - "+ driver.findElement(CrmLoginPage.LOGIN_PAGE_TITLE).getText().equalsIgnoreCase("Логин"));
         CrmLoginPageActions.loginValidUser(ConfProperties.getProperty("crmGeekbrainsLogin"), ConfProperties.getProperty("crmGeekbrainsPassword"));
-        Assertions.assertAll(
-                () -> assertEquals("Логин", driver.findElement(CrmLoginPage.LOGIN_PAGE_TITLE).getText()),
-                () -> assertEquals(ConfProperties.getProperty("crmGeekbrainsLogin"), driver.findElement(CrmLoginPage.LOGIN_FIELD).getText()),
-                () -> assertEquals(ConfProperties.getProperty("crmGeekbrainsPassword"), driver.findElement(CrmLoginPage.PASSWORD_FIELD).getText())
-        );
-        LOGGER.info("Осуществлена верификация введенных данных");
+        Assertions. assertEquals("Логин", driver.findElement(CrmLoginPage.LOGIN_PAGE_TITLE).getText());
+        LOGGER.info("Осуществлена верификация загруженной страницы");
         CrmLoginPageActions.signIn();
         CrmMainPageActions.createProject();
         Assertions.assertEquals("Создать проект", driver.findElement(CreateProjectPage.CREATE_PROJECT_TITLE).getText());
