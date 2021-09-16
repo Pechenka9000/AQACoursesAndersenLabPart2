@@ -21,6 +21,11 @@
   </properties>
   <dependencies>
     <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-junit5</artifactId>
+      <version>2.14.0</version>
+    </dependency>
+    <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
       <version>${slf4j.version}</version>
@@ -87,7 +92,6 @@
   </dependencies>
 
   <build>
-    <pluginManagement>
       <plugins>
         <!-- _______________________________________________ -->
         <plugin>
@@ -95,9 +99,48 @@
           <version>3.0.0-M5</version>
         </plugin>
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>2.12</version>
+          <version>2.22.2</version>
+          <!-- allure settings -->
+          <configuration>
+            <includes>
+              <include>*/**</include>
+            </includes>
+            <groups>create</groups>
+            <testFailureIgnore>false</testFailureIgnore>
+            <argLine>
+              -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.6/aspectjweaver-1.9.6.jar"
+            </argLine>
+            <systemProperties>
+              <property>
+                <name>junit.jupiter.extensions.autodetection.enabled</name>
+                <value>true</value>
+              </property>
+            </systemProperties>
+            <systemPropertyVariables>
+              <allure.result.directory>target/allure-results</allure.result.directory>
+            </systemPropertyVariables>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.aspectj</groupId>
+              <artifactId>aspectjweaver</artifactId>
+              <version>1.9.6</version>
+            </dependency>
+          </dependencies>
+          <!-- end of allure settings  -->
         </plugin>
+        <!-- allure-maven-plugin -->
+        <plugin>
+          <groupId>io.qameta.allure</groupId>
+          <artifactId>allure-maven</artifactId>
+          <version>2.10.0</version>
+          <configuration>
+            <allureDownloadUrl>https://github.com/allure-framework/allure2/releases/download/2.14.0/allure-2.14.0.zip</allureDownloadUrl>
+          </configuration>
+        </plugin>
+        <!-- end of allure-maven-plugin -->
         <plugin>
           <artifactId>maven-surefire-report-plugin</artifactId>
           <version>3.0.0-M5</version>
@@ -143,6 +186,5 @@
           <version>2.8.2</version>
         </plugin>
       </plugins>
-    </pluginManagement>
   </build>
 </project>

@@ -1,15 +1,33 @@
-2021-09-14 04:53:46 INFO  CRMGeekbrainsTest - РћСЃСѓС‰РµСЃС‚РІР»РµРЅР° Р·Р°РіСЂСѓР·РєР° СЃР°Р№С‚Р°
-2021-09-14 04:53:46 INFO  CRMGeekbrainsTest - Р’РµСЂРёС„РёРєР°С†РёСЏ С‚РµРєСЃС‚Р° ('Р›РѕРіРёРЅ') РІ Р·Р°РіРѕР»РѕРІРєРµ - true
-2021-09-14 04:53:47 INFO  CrmLoginPage - Р’РІРµРґС‘РЅ Р»РѕРіРёРЅ - 'Applanatest1'
-2021-09-14 04:53:47 INFO  CrmLoginPage - Р’РІРµРґС‘РЅ РїР°СЂРѕР»СЊ - 'Student2020!'
-2021-09-14 04:53:53 INFO  CrmLoginPage - РќР°Р¶Р°С‚Р° РєР»Р°РІРёС€Р° 'Р’РѕР№С‚Рё'
-2021-09-14 04:53:53 INFO  CrmMainPage - Р’РµСЂРёС„РёРєР°С†РёСЏ С‚РµРєСЃС‚Р° 'Geekbrains' РІ Р·Р°РіРѕР»РѕРІРєРµ - true
-2021-09-14 04:53:53 INFO  CrmMainPage - Р’С‹Р±СЂР°РЅР° РІРєР»Р°РґРєР° 'РљРѕРЅС‚Р°РєС‚РЅС‹Рµ Р»РёС†Р°'
-2021-09-14 04:53:56 INFO  CrmMainPage - РћСЃСѓС‰РµСЃС‚РІР»С‘РЅ РєР»РёРє РїРѕ РєРЅРѕРїРєРµ 'РЎРѕР·РґР°С‚СЊ РєРѕРЅС‚Р°РєС‚РЅРѕРµ Р»РёС†Рѕ'
-2021-09-14 04:53:57 INFO  CRMGeekbrainsTest - Р’РµСЂРёС„РёРєР°С†РёСЏ С‚РµРєСЃС‚Р° ('РЎРѕР·РґР°С‚СЊ РєРѕРЅС‚Р°РєС‚РЅРѕРµ Р»РёС†Рѕ') РІ Р·Р°РіРѕР»РѕРІРєРµ - true
-2021-09-14 04:53:57 INFO  CreateContactFacePage - Р’РІРµРґРµРЅР° С„Р°РјРёР»РёСЏ - 'Р”РѕР±С‹С‚С‡РёРє'
-2021-09-14 04:53:57 INFO  CreateContactFacePage - Р’РІРµРґРµРЅРѕ РёРјСЏ - 'РђР»РјР°Р·РѕРІ'
-2021-09-14 04:53:59 INFO  CreateContactFacePage - Р’С‹Р±СЂР°РЅР° РѕСЂРіР°РЅРёР·Р°С†РёСЏ РёР· РїСЂРµРґР»РѕР¶РµРЅРЅРѕРіРѕ СЃРїРёСЃРєР°
-2021-09-14 04:53:59 INFO  CreateContactFacePage - Р’РІРµРґРµРЅР° РґРѕР»Р¶РЅРѕСЃС‚СЊ - 'РўРѕСЂРіР°С€РђР»РјР°Р·Р°РјРё'
-2021-09-14 04:53:59 INFO  CRMGeekbrainsTest - РћСЃСѓС‰РµСЃС‚РІР»РµРЅР° РІРµСЂРёС„РёРєР°С†РёСЏ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…
-2021-09-14 04:54:00 INFO  CreateContactFacePage - РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° 'РЎРѕС…СЂР°РЅРёС‚СЊ Рё Р·Р°РєСЂС‹С‚СЊ'
+2021-09-16 18:34:46 INFO  TriangleTestConfig - Соответствие периметров:
+expected - 20
+actual - 20
+2021-09-16 18:34:46 INFO  TriangleTestConfig - Соответствие периметров:
+expected - 23
+actual - 23
+2021-09-16 18:34:46 INFO  TriangleTestConfig - Соответствие периметров:
+expected - 10
+actual - 10
+2021-09-16 18:34:46 INFO  TriangleTestConfig - Test Successful for test Triangle assertPerimeter test 
+
+2021-09-16 18:34:46 INFO  TriangleTestConfig - Проверка треугольника на существование:
+expected - true
+actual - true
+2021-09-16 18:34:46 INFO  TriangleTestConfig - Проверка треугольника на существование:
+expected - true
+actual - true
+2021-09-16 18:34:46 INFO  TriangleTestConfig - Проверка треугольника на существование:
+expected - true
+actual - true
+2021-09-16 18:34:46 INFO  TriangleTestConfig - Проверка треугольника на существование:
+expected - false
+actual - false
+2021-09-16 18:34:46 INFO  TriangleTestConfig - Test Successful for test Triangle reality 
+
+2021-09-16 18:34:46 INFO  TriangleTestConfig - Соответствие площадей:
+expected - 14.142135623730951
+actual - 14.142135623730951
+2021-09-16 18:34:46 INFO  TriangleTestConfig - Соответствие площадей:
+expected - 20.662465970933866
+actual - 14.832396974191326
+2021-09-16 18:34:46 INFO  TriangleTestConfig - Test Failed for test Triangle assertSquare test: 
+2021-09-16 18:34:46 INFO  TriangleTestConfig - Test result summary for TriangleTest {SUCCESSFUL=2, FAILED=1}
