@@ -1,5 +1,6 @@
 package school.lesson14.crmGeekbrainsStructure;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
 public class CreateProjectPageActions extends CreateProjectPage{
@@ -8,6 +9,7 @@ public class CreateProjectPageActions extends CreateProjectPage{
         CreateProjectPage.driver = driver;
     }
 
+    @Step("Ввести данные для создания нового проекта")
     public static void createNewProject() {
         driver.findElement(PROJECT_NAME1).sendKeys("diamondsPetroleumSuperSellersWebSite");
         LOGGER.info("Введено название проекта");
@@ -36,6 +38,7 @@ public class CreateProjectPageActions extends CreateProjectPage{
         LOGGER.info("Выбрано контактное лицо");
     }
 
+    @Step("Сохранить информацию и закрыть окно создания нового проекта")
     public static void saveAndCloseNewProject() {
         driver.findElement(CrmMainPageActions.SAVE_AND_CLOSE_BUTTON).click();
         LOGGER.info("Нажата кнопка 'Сохранить и закрыть'");

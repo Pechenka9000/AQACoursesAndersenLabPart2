@@ -1,5 +1,6 @@
 package school.lesson14.crmGeekbrainsStructure;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
 public class CrmMainPageActions extends CrmMainPage {
@@ -8,6 +9,7 @@ public class CrmMainPageActions extends CrmMainPage {
         CrmMainPage.driver = driver;
     }
 
+    @Step("Инициация создания нового проекта")
     public static void createProject() {
         LOGGER.info("Верификация текста 'Geekbrains' в заголовке - "+ driver.findElement(MAIN_PAGE_TITLE).getText().equalsIgnoreCase("Geekbrains"));
         driver.findElement(PROJECTS_BUTTON).click();
@@ -17,6 +19,7 @@ public class CrmMainPageActions extends CrmMainPage {
         LOGGER.info("Осуществлён клик по кнопке 'Создать проект'");
     }
 
+    @Step("Инициация создания нового контактного лица")
     public static void createContactFace() {
         LOGGER.info("Верификация текста 'Geekbrains' в заголовке - "+ driver.findElement(MAIN_PAGE_TITLE).getText().equalsIgnoreCase("Geekbrains"));
         driver.findElement(COUNTER_PARTIES_BUTTON).click();
@@ -26,6 +29,7 @@ public class CrmMainPageActions extends CrmMainPage {
         LOGGER.info("Осуществлён клик по кнопке 'Создать контактное лицо'");
     }
 
+    @Step("Выход из профиля CRMGeekbrains")
     public static void logOut() {
         driver.findElement(PROFILE_FIELD).click();
         LOGGER.info("Осуществлён клик по кнопке профиля");

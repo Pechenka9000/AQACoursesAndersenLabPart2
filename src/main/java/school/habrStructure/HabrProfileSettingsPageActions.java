@@ -1,5 +1,6 @@
 package school.habrStructure;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -9,6 +10,7 @@ public class HabrProfileSettingsPageActions extends HabrProfileSettingsPage{
         HabrProfileSettingsPage.driver = driver;
     }
 
+    @Step("Редактирование профиля Хабр через настройки профиля")
     public static void changeAndSaveProfileSettings(String name, String gender, String country, String region, String city) {
         driver.findElement(REAL_NAME_RAW).clear();
         driver.findElement(REAL_NAME_RAW).sendKeys(name);
@@ -31,6 +33,7 @@ public class HabrProfileSettingsPageActions extends HabrProfileSettingsPage{
         LOGGER.info(String.format("Выбран город - '%s'", city));
     }
 
+    @Step("Изменить и сохранить настройки профиля Хабр")
     public static void clickChangeAndSaveProfileSettings() {
         driver.findElement(SAVE_CHANGES_BUTTON).click();
         LOGGER.info("Осуществлен клик по кнопке 'Сохранить изменения'");

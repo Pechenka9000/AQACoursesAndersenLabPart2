@@ -86,12 +86,14 @@ public class HabrTest extends HabrTestConfig {
                 () -> assertEquals("Полоцк", driver.findElement(By.xpath(String.format(HabrProfileSettingsPage.XPATH_SELECTOR_FINDER, HabrProfileSettingsPage.CITY))).getText())
         );
         LOGGER.info("Осуществлена верификация введенных данных");
+        HabrProfileSettingsPageActions.clickChangeAndSaveProfileSettings();
         HabrMainPageActions.logOut();
     }
 
     @Test
     @Description("Вход в профиль Хабр-Карьера")
     public void testCase5() {
+        driver.get(ConfProperties.getProperty("habrWebSite"));
         LOGGER.info("Осуществлена загрузка сайта 'Хабр'");
         HabrMainPageActions.startCareer();
         ArrayList<String> tabs2 = new ArrayList<> (driver.getWindowHandles());
@@ -115,6 +117,7 @@ public class HabrTest extends HabrTestConfig {
     @Test
     @Description("Поиск образовательного курса и выход из профиля Хабр-Карьера")
     public void testCase6() {
+        driver.get(ConfProperties.getProperty("habrWebSite"));
         LOGGER.info("Осуществлена загрузка сайта");
         HabrMainPageActions.startCareer();
         ArrayList<String> tabs2 = new ArrayList<> (driver.getWindowHandles());

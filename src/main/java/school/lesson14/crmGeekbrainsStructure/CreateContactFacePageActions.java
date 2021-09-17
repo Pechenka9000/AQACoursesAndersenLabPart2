@@ -1,5 +1,6 @@
 package school.lesson14.crmGeekbrainsStructure;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
 public class CreateContactFacePageActions extends CreateContactFacePage{
@@ -8,6 +9,7 @@ public class CreateContactFacePageActions extends CreateContactFacePage{
         CreateContactFacePage.driver = driver;
     }
 
+    @Step("Ввести данные для создания контактного лица")
     public static void createNewContactFace(String lastName, String firstName, String position) {
         driver.findElement(LAST_NAME).sendKeys(lastName);
         LOGGER.info(String.format("Введена фамилия - '%s'", lastName));
@@ -21,6 +23,7 @@ public class CreateContactFacePageActions extends CreateContactFacePage{
         LOGGER.info(String.format("Введена должность - '%s'", position));
     }
 
+    @Step("Сохранить информацию и закрыть окно создания контактного лица")
     public static void saveAndCloseNewContactFace() {
         driver.findElement(CrmMainPage.SAVE_AND_CLOSE_BUTTON).click();
         LOGGER.info("Нажата кнопка 'Сохранить и закрыть'");

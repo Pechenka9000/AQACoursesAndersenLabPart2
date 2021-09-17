@@ -77,7 +77,7 @@ public class Task2HabrTest extends Task2HabrTestConfig {
                 () -> assertEquals("Полоцк", driver.findElement(By.xpath(String.format(HabrProfileSettingsPage.XPATH_SELECTOR_FINDER, HabrProfileSettingsPage.CITY))).getText())
         );
         LOGGER.info("Осуществлена верификация введенных данных");
+        HabrProfileSettingsPageActions.clickChangeAndSaveProfileSettings();
         HabrMainPageActions.logOut();
-        LOGGER.info("Осуществлен выход из профиля");
     }
 }

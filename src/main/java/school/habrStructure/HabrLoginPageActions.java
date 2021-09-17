@@ -1,5 +1,6 @@
 package school.habrStructure;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
 public class HabrLoginPageActions extends HabrLoginPage{
@@ -8,6 +9,7 @@ public class HabrLoginPageActions extends HabrLoginPage{
         HabrLoginPage.driver = driver;
     }
 
+    @Step("Ввод данных для последующего входа в профиль Хабр")
     public static void loginValidUser(String userEmail, String password) {
         driver.findElement(EMAIL_FIELD).click();
         driver.findElement(EMAIL_FIELD).clear();
@@ -19,6 +21,7 @@ public class HabrLoginPageActions extends HabrLoginPage{
         LOGGER.info(String.format("Введён пароль - '%s'", password));
     }
 
+    @Step("Вход в профиль Хабр")
     public static void clickSignInButton() {
         driver.findElement(SIGN_IN_BUTTON).click();
         LOGGER.info("Нажата клавиша 'Войти'");

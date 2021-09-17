@@ -1,5 +1,7 @@
 package school.lesson12.task1;
 
+import io.qameta.allure.Step;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,19 +16,23 @@ public class Triangle {
         this.c = c;
     }
 
+    @Step("Расчет периметра треугольника")
     public static int computePerimeter(Triangle triangle) {
         return (triangle.a + triangle.b + triangle.c);
     }
 
+    @Step("Расчет площади треугольника")
     public static double computeSquare(Triangle triangle) {
         double semiPerimeter = computePerimeter(triangle)/2;
         return Math.sqrt(semiPerimeter * (semiPerimeter - triangle.a) * (semiPerimeter - triangle.b) * (semiPerimeter - triangle.c));
     }
 
+    @Step("Проверка треугольника на 'существование'")
     public static boolean isTriangle(Triangle triangle) {
         return ((triangle.a + triangle.b) > triangle.c) & ((triangle.b + triangle.c) > triangle.a) & ((triangle.a + triangle.c)) > triangle.b;
     }
 
+    @Step("Создание списка вычисленных площадей треугольников")
     public static List<Double> squareListCreator() {
         List<Double> actualSquareList = new ArrayList<>();
         for (int i = 0; i < TriangleRepository.getTriangleList().size(); i++) {
