@@ -41,6 +41,7 @@ public class Task2HabrTestConfig {
         driver.manage().window().maximize();
         habrLoginPageActions = new HabrLoginPageActions(driver);
         habrPublicationCreatorActions = new HabrPublicationCreatorActions(driver);
+        profileSettingsPageActions = new HabrProfileSettingsPageActions(driver);
     }
 
     @After

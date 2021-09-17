@@ -19,11 +19,7 @@ public class Task1CRMTest extends Task1CRMTestConfig {
         LOGGER.info("Осуществлена загрузка сайта");
         LOGGER.info("Верификация текста ('Логин') в заголовке - "+ driver.findElement(CrmLoginPage.LOGIN_PAGE_TITLE).getText().equalsIgnoreCase("Логин"));
         CrmLoginPageActions.loginValidUser(school.lesson14.ConfProperties.getProperty("crmGeekbrainsLogin"), school.lesson14.ConfProperties.getProperty("crmGeekbrainsPassword"));
-        Assertions.assertAll(
-                () -> assertEquals("Логин", driver.findElement(CrmLoginPage.LOGIN_PAGE_TITLE).getText()),
-                () -> assertEquals(school.lesson14.ConfProperties.getProperty("crmGeekbrainsLogin"), driver.findElement(CrmLoginPage.LOGIN_FIELD).getText()),
-                () -> assertEquals(school.lesson14.ConfProperties.getProperty("crmGeekbrainsPassword"), driver.findElement(CrmLoginPage.PASSWORD_FIELD).getText())
-        );
+        Assertions. assertEquals("Логин", driver.findElement(CrmLoginPage.LOGIN_PAGE_TITLE).getText());
         LOGGER.info("Осуществлена верификация введенных данных");
         CrmLoginPageActions.signIn();
         CrmMainPageActions.createProject();

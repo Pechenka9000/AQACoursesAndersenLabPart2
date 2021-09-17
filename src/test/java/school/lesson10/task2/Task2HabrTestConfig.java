@@ -34,7 +34,9 @@ public class Task2HabrTestConfig {
         driver.get(ConfProperties.getProperty("habrWebSite"));
         driver.manage().window().maximize();
         habrLoginPageActions = new HabrLoginPageActions(driver);
+        HabrMainPageActions.startSignIn();
         HabrLoginPageActions.loginValidUser(ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
+        HabrLoginPageActions.clickSignInButton();
     }
 
     @After

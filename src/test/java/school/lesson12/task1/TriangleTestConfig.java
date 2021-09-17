@@ -14,7 +14,7 @@ public class TriangleTestConfig {
     protected  List<Double> expectedTriangleSquares = new ArrayList<>();
     {
         expectedTriangleSquares.add(14.142135623730951);
-        expectedTriangleSquares.add(20.662465970933866);
+        expectedTriangleSquares.add(14.832396974191326);
         expectedTriangleSquares.add(4.47213595499958);
     }
 

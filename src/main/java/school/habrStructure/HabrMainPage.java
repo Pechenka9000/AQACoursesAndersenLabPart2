@@ -20,7 +20,7 @@ public class HabrMainPage {
     protected static final By CONFIRM_FIND_ICON  = By.xpath("//div[@class='tm-input-text-decorated__label tm-input-text-decorated__label_after']");
     protected static final By SEARCH_RAW         = By.xpath("//input[@placeholder='Поиск']");
     public static final By LINK_COMMENT       = By.xpath("//span[contains(text(),'2.0 — WebDriver. Впечатления, проблемы и советы по')]");
-    public static final By LINK_POST          = By.xpath("//span[contains(text(),'ЭТТ, или когда в резюме можно написать, что профес')]");
+    public static final By LINK_POST          = By.xpath("//span[contains(text(),'Возможности функций, возвращающих другие функции в')]");
     public static final By LINK_POST_TITLE    = By.xpath("//span[contains(text(),'Selenium 2.0 — WebDriver. Впечатления, проблемы и ')]");
     protected static final By NEW_PUBLICATION_ICON = By.xpath("//a[@href='/ru/publication/new/']");
     protected static final By PROFILE_SETTINGS_BUTTON   = By.xpath("//span[contains(text(),'Настройки профиля')]");

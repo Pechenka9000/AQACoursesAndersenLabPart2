@@ -1,33 +1,17 @@
-2021-09-16 18:34:46 INFO  TriangleTestConfig - Соответствие периметров:
-expected - 20
-actual - 20
-2021-09-16 18:34:46 INFO  TriangleTestConfig - Соответствие периметров:
-expected - 23
-actual - 23
-2021-09-16 18:34:46 INFO  TriangleTestConfig - Соответствие периметров:
-expected - 10
-actual - 10
-2021-09-16 18:34:46 INFO  TriangleTestConfig - Test Successful for test Triangle assertPerimeter test 
-
-2021-09-16 18:34:46 INFO  TriangleTestConfig - Проверка треугольника на существование:
-expected - true
-actual - true
-2021-09-16 18:34:46 INFO  TriangleTestConfig - Проверка треугольника на существование:
-expected - true
-actual - true
-2021-09-16 18:34:46 INFO  TriangleTestConfig - Проверка треугольника на существование:
-expected - true
-actual - true
-2021-09-16 18:34:46 INFO  TriangleTestConfig - Проверка треугольника на существование:
-expected - false
-actual - false
-2021-09-16 18:34:46 INFO  TriangleTestConfig - Test Successful for test Triangle reality 
-
-2021-09-16 18:34:46 INFO  TriangleTestConfig - Соответствие площадей:
-expected - 14.142135623730951
-actual - 14.142135623730951
-2021-09-16 18:34:46 INFO  TriangleTestConfig - Соответствие площадей:
-expected - 20.662465970933866
-actual - 14.832396974191326
-2021-09-16 18:34:46 INFO  TriangleTestConfig - Test Failed for test Triangle assertSquare test: 
-2021-09-16 18:34:46 INFO  TriangleTestConfig - Test result summary for TriangleTest {SUCCESSFUL=2, FAILED=1}
+2021-09-17 03:22:06 INFO  HabrTest - РћСЃСѓС‰РµСЃС‚РІР»РµРЅР° Р·Р°РіСЂСѓР·РєР° СЃР°Р№С‚Р°
+2021-09-17 03:22:06 INFO  HabrMainPage - РћСЃСѓС‰РµСЃС‚РІР»С‘РЅ РєР»РёРє РїРѕ РёРєРѕРЅРєРµ РїСЂРѕС„РёР»СЏ
+2021-09-17 03:22:10 INFO  HabrMainPage - РћСЃСѓС‰РµСЃС‚РІР»С‘РЅ РєР»РёРє РїРѕ РєРЅРѕРїРєРµ 'Р’РѕР№С‚Рё'
+2021-09-17 03:22:11 INFO  HabrLoginPage - Р’РІРµРґС‘РЅ @email - 'pechenka9000@gmail.com'
+2021-09-17 03:22:11 INFO  HabrLoginPage - Р’РІРµРґС‘РЅ РїР°СЂРѕР»СЊ - 'Zetju2mkyv'
+2021-09-17 03:22:11 INFO  HabrTest - РџСЂРѕРёР·РІРµРґРµРЅР° РІРµСЂРёС„РёРєР°С†РёСЏ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…
+2021-09-17 03:22:11 INFO  HabrLoginPage - РќР°Р¶Р°С‚Р° РєР»Р°РІРёС€Р° 'Р’РѕР№С‚Рё'
+2021-09-17 03:22:11 INFO  HabrTest - РћСЃСѓС‰РµСЃС‚РІР»РµРЅР° Р·Р°РіСЂСѓР·РєР° СЃР°Р№С‚Р°
+2021-09-17 03:22:17 INFO  HabrTest - Р’РµСЂРёС„РёРєР°С†РёСЏ С‚РµРєСЃС‚Р° ('@pechenka9000') РІ Р·Р°РіРѕР»РѕРІРєРµ РїСЂРѕС„РёР»СЏ - true
+2021-09-17 03:22:17 INFO  HabrTest - Р»РѕРі Р±СЂР°СѓР·РµСЂР° - [2021-09-17T03:22:07+0300] [WARNING] https://assets.habr.com/habr-web/js/chunk-vendors.c51da914.js 111:27019 "[GPT] Invalid arguments: SizeMappingBuilder.addSize(0, 0)."
+2021-09-17 03:22:17 INFO  HabrTest - Р»РѕРі Р±СЂР°СѓР·РµСЂР° - [2021-09-17T03:22:07+0300] [WARNING] https://assets.habr.com/habr-web/js/chunk-vendors.c51da914.js 111:27019 "[GPT] Invalid arguments: SizeMappingBuilder.addSize(0, 0)."
+2021-09-17 03:22:17 INFO  HabrTest - Р»РѕРі Р±СЂР°СѓР·РµСЂР° - [2021-09-17T03:22:07+0300] [WARNING] https://assets.habr.com/habr-web/js/chunk-vendors.c51da914.js 111:27019 "[GPT] Size mapping is null because invalid mappings were added: [[0,0]]."
+2021-09-17 03:22:17 INFO  HabrTest - Р»РѕРі Р±СЂР°СѓР·РµСЂР° - [2021-09-17T03:22:07+0300] [WARNING] https://assets.habr.com/habr-web/js/chunk-vendors.c51da914.js 111:27019 "[GPT] Size mapping is null because invalid mappings were added: [[0,0]]."
+2021-09-17 03:22:17 INFO  HabrTest - Р»РѕРі Р±СЂР°СѓР·РµСЂР° - [2021-09-17T03:22:07+0300] [WARNING] https://assets.habr.com/habr-web/js/chunk-vendors.c51da914.js 111:27019 "Incorrect usage of googletag.Slot defineSizeMapping: Size mapping must be an array"
+2021-09-17 03:22:17 INFO  HabrTest - Р»РѕРі Р±СЂР°СѓР·РµСЂР° - [2021-09-17T03:22:07+0300] [WARNING] https://assets.habr.com/habr-web/js/chunk-vendors.c51da914.js 111:27019 "Incorrect usage of googletag.Slot defineSizeMapping: Size mapping must be an array"
+2021-09-17 03:22:17 INFO  HabrTest - Р»РѕРі Р±СЂР°СѓР·РµСЂР° - [2021-09-17T03:22:15+0300] [SEVERE] https://assets.habr.com/img/subscription.png?v=1 - Failed to load resource: the server responded with a status of 404 ()
+2021-09-17 03:22:17 INFO  HabrTest - Р»РѕРі Р±СЂР°СѓР·РµСЂР° - [2021-09-17T03:22:15+0300] [SEVERE] https://assets.habr.com/img/subscription.png?v=1 - Failed to load resource: the server responded with a status of 404 ()

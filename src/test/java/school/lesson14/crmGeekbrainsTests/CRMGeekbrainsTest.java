@@ -2,6 +2,7 @@ package school.lesson14.crmGeekbrainsTests;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import school.lesson14.ConfProperties;
 import school.lesson14.crmGeekbrainsStructure.*;
 
@@ -15,6 +16,7 @@ import static org.junit.Assert.assertEquals;
 public class CRMGeekbrainsTest extends CRMGeekbrainsTestConfig {
 
     @Test
+    @DisplayName("Test-case №1. Создание проекта")
     public void testCase1() {
         LOGGER.info("Осуществлена загрузка сайта");
         LOGGER.info("Верификация текста ('Логин') в заголовке - "+ driver.findElement(CrmLoginPage.LOGIN_PAGE_TITLE).getText().equalsIgnoreCase("Логин"));
@@ -39,6 +41,7 @@ public class CRMGeekbrainsTest extends CRMGeekbrainsTestConfig {
     }
 
     @Test
+    @DisplayName("Test-case №2. Создание контактного лица в организации с минимально заполненной информацией")
     public void testCase2() {
         LOGGER.info("Осуществлена загрузка сайта");
         Assertions.assertEquals("Логин", driver.findElement(CrmLoginPage.LOGIN_PAGE_TITLE).getText());

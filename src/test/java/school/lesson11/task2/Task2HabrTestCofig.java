@@ -37,6 +37,7 @@ public class Task2HabrTestCofig {
         driver.get(ConfProperties.getProperty("habrWebSite"));
         driver.manage().window().maximize();
         habrLoginPageActions = new HabrLoginPageActions(driver);
+        profileSettingsPageActions = new HabrProfileSettingsPageActions(driver);
     }
 
     @After
