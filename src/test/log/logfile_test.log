@@ -1,17 +1,13 @@
-2021-09-17 03:22:06 INFO  HabrTest - Осуществлена загрузка сайта
-2021-09-17 03:22:06 INFO  HabrMainPage - Осуществлён клик по иконке профиля
-2021-09-17 03:22:10 INFO  HabrMainPage - Осуществлён клик по кнопке 'Войти'
-2021-09-17 03:22:11 INFO  HabrLoginPage - Введён @email - 'pechenka9000@gmail.com'
-2021-09-17 03:22:11 INFO  HabrLoginPage - Введён пароль - 'Zetju2mkyv'
-2021-09-17 03:22:11 INFO  HabrTest - Произведена верификация введенных данных
-2021-09-17 03:22:11 INFO  HabrLoginPage - Нажата клавиша 'Войти'
-2021-09-17 03:22:11 INFO  HabrTest - Осуществлена загрузка сайта
-2021-09-17 03:22:17 INFO  HabrTest - Верификация текста ('@pechenka9000') в заголовке профиля - true
-2021-09-17 03:22:17 INFO  HabrTest - лог браузера - [2021-09-17T03:22:07+0300] [WARNING] https://assets.habr.com/habr-web/js/chunk-vendors.c51da914.js 111:27019 "[GPT] Invalid arguments: SizeMappingBuilder.addSize(0, 0)."
-2021-09-17 03:22:17 INFO  HabrTest - лог браузера - [2021-09-17T03:22:07+0300] [WARNING] https://assets.habr.com/habr-web/js/chunk-vendors.c51da914.js 111:27019 "[GPT] Invalid arguments: SizeMappingBuilder.addSize(0, 0)."
-2021-09-17 03:22:17 INFO  HabrTest - лог браузера - [2021-09-17T03:22:07+0300] [WARNING] https://assets.habr.com/habr-web/js/chunk-vendors.c51da914.js 111:27019 "[GPT] Size mapping is null because invalid mappings were added: [[0,0]]."
-2021-09-17 03:22:17 INFO  HabrTest - лог браузера - [2021-09-17T03:22:07+0300] [WARNING] https://assets.habr.com/habr-web/js/chunk-vendors.c51da914.js 111:27019 "[GPT] Size mapping is null because invalid mappings were added: [[0,0]]."
-2021-09-17 03:22:17 INFO  HabrTest - лог браузера - [2021-09-17T03:22:07+0300] [WARNING] https://assets.habr.com/habr-web/js/chunk-vendors.c51da914.js 111:27019 "Incorrect usage of googletag.Slot defineSizeMapping: Size mapping must be an array"
-2021-09-17 03:22:17 INFO  HabrTest - лог браузера - [2021-09-17T03:22:07+0300] [WARNING] https://assets.habr.com/habr-web/js/chunk-vendors.c51da914.js 111:27019 "Incorrect usage of googletag.Slot defineSizeMapping: Size mapping must be an array"
-2021-09-17 03:22:17 INFO  HabrTest - лог браузера - [2021-09-17T03:22:15+0300] [SEVERE] https://assets.habr.com/img/subscription.png?v=1 - Failed to load resource: the server responded with a status of 404 ()
-2021-09-17 03:22:17 INFO  HabrTest - лог браузера - [2021-09-17T03:22:15+0300] [SEVERE] https://assets.habr.com/img/subscription.png?v=1 - Failed to load resource: the server responded with a status of 404 ()
+2021-09-17 12:31:26 INFO  HabrTest - Осуществлена загрузка сайта
+2021-09-17 12:31:26 INFO  HabrMainPage - Осуществлён клик по иконке профиля
+2021-09-17 12:31:28 INFO  HabrMainPage - Осуществлён клик по кнопке 'Войти'
+2021-09-17 12:31:28 INFO  HabrLoginPage - Введён @email - 'pechenka9000@gmail.com'
+2021-09-17 12:31:28 INFO  HabrLoginPage - Введён пароль - 'Zetju2mkyv'
+2021-09-17 12:31:28 INFO  HabrTest - Произведена верификация введенных данных
+2021-09-17 12:31:28 INFO  HabrLoginPage - Нажата клавиша 'Войти'
+2021-09-17 12:31:28 INFO  HabrTest - Осуществлена загрузка сайта
+2021-09-17 12:31:33 INFO  HabrTest - Верификация текста ('@pechenka9000') в заголовке профиля - true
+2021-09-17 12:31:33 INFO  HabrTest - лог браузера - [2021-09-17T12:31:25+0300] [SEVERE] https://assets.habr.com/habr-web/js/chunk-vendors.c51da914.js 6:42486 Uncaught DOMException: Failed to execute 'appendChild' on 'Node': This node type does not support this method.
+2021-09-17 12:31:33 INFO  HabrTest - лог браузера - [2021-09-17T12:31:26+0300] [SEVERE] https://assets.habr.com/habr-web/js/chunk-vendors.c51da914.js 111:27019 "Error during service worker registration:" TypeError: Failed to register a ServiceWorker for scope ('https://habr.com/') with script ('https://habr.com/service-worker.js'): ServiceWorker script evaluation failed
+2021-09-17 12:31:33 INFO  HabrTest - лог браузера - [2021-09-17T12:31:32+0300] [SEVERE] https://assets.habr.com/img/subscription.png?v=1 - Failed to load resource: the server responded with a status of 404 ()
+2021-09-17 12:31:33 INFO  HabrTest - лог браузера - [2021-09-17T12:31:33+0300] [SEVERE] https://assets.habr.com/habr-web/js/chunk-vendors.c51da914.js 111:27019 "Error during service worker registration:" TypeError: Failed to register a ServiceWorker for scope ('https://habr.com/') with script ('https://habr.com/service-worker.js'): ServiceWorker script evaluation failed

@@ -1,5 +1,6 @@
 package school.lesson14.crmGeekbrainsTests;
 
+import io.qameta.allure.Description;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -13,10 +14,11 @@ import static org.junit.Assert.assertEquals;
  * Test-case1 и Test-case2 находится по ссылке:
  * https://docs.google.com/document/d/1RLTKJN8-8njE2UeEcKY6aDoBTpXwvgskoPZLPCT4iY8/edit?usp=sharing
  */
+@DisplayName("Позитивные тест-кейсы CRMGeekbrains")
 public class CRMGeekbrainsTest extends CRMGeekbrainsTestConfig {
 
     @Test
-    @DisplayName("Test-case №1. Создание проекта")
+    @Description("Создание проекта")
     public void testCase1() {
         LOGGER.info("Осуществлена загрузка сайта");
         LOGGER.info("Верификация текста ('Логин') в заголовке - "+ driver.findElement(CrmLoginPage.LOGIN_PAGE_TITLE).getText().equalsIgnoreCase("Логин"));
@@ -41,7 +43,7 @@ public class CRMGeekbrainsTest extends CRMGeekbrainsTestConfig {
     }
 
     @Test
-    @DisplayName("Test-case №2. Создание контактного лица в организации с минимально заполненной информацией")
+    @Description("Создание контактного лица в организации с минимально заполненной информацией")
     public void testCase2() {
         LOGGER.info("Осуществлена загрузка сайта");
         Assertions.assertEquals("Логин", driver.findElement(CrmLoginPage.LOGIN_PAGE_TITLE).getText());

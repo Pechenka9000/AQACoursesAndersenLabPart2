@@ -1,5 +1,6 @@
 package school.lesson14.habrTests;
 
+import io.qameta.allure.Description;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -16,10 +17,11 @@ import static org.junit.Assert.assertEquals;
  * Test-cases находятся по ссылке:
  * https://docs.google.com/document/d/14p2rgzeft96fiHZvV4V5nWB2sE_I9dd-dLs-68lmOtw/edit?usp=sharing
  */
+@DisplayName("Позитивные тест-кейсы Habr")
 public class HabrTest extends HabrTestConfig {
 
     @Test
-    @DisplayName("Test-case №1. Вход в профиль")
+    @Description("Вход в профиль")
     public void testCase1() {
         LOGGER.info("Осуществлена загрузка сайта");
         HabrMainPageActions.startSignIn();
@@ -38,7 +40,7 @@ public class HabrTest extends HabrTestConfig {
     }
 
     @Test
-    @DisplayName("Test-case №2. Поиск и добавление комментария в закладки")
+    @Description("Поиск и добавление комментария в закладки")
     public void testCase2() {
         HabrMainPageActions.logIn(ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
         HabrMainPageActions.findSmthFromSearchRaw("Selenium IDE");
@@ -48,7 +50,7 @@ public class HabrTest extends HabrTestConfig {
     }
 
     @Test
-    @DisplayName("Test-case №3. Создание публикации")
+    @Description("Создание публикации")
     public void testCase3() {
         HabrMainPageActions.logIn(ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
         HabrMainPageActions.createNewPublication();
@@ -70,7 +72,7 @@ public class HabrTest extends HabrTestConfig {
     }
 
     @Test
-    @DisplayName("Test-case №4. Поиск и добавление комментария в закладки")
+    @Description("Редактирование профиля данной информацией и выход из него")
     public void testCase4() {
         HabrMainPageActions.logIn(ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
         HabrMainPageActions.openProfileSettings();
@@ -88,7 +90,7 @@ public class HabrTest extends HabrTestConfig {
     }
 
     @Test
-    @DisplayName("Test-case №5. Вход в профиль Хабр-Карьера")
+    @Description("Вход в профиль Хабр-Карьера")
     public void testCase5() {
         LOGGER.info("Осуществлена загрузка сайта 'Хабр'");
         HabrMainPageActions.startCareer();
@@ -111,7 +113,7 @@ public class HabrTest extends HabrTestConfig {
     }
 
     @Test
-    @DisplayName("Test-case №6. Поиск образовательного курса и выход из профиля Хабр-Карьера")
+    @Description("Поиск образовательного курса и выход из профиля Хабр-Карьера")
     public void testCase6() {
         LOGGER.info("Осуществлена загрузка сайта");
         HabrMainPageActions.startCareer();
