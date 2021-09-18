@@ -38,15 +38,6 @@ public class HabrCareerPageActions extends HabrCareerPage {
         LOGGER.info("Выполнен клик по кнопке 'Войти в профиль Хабр Карьера'");
     }
 
-    /*@Step("Ввод данных для последующего входа в профиль Хабр-Карьера")
-    public static void enterCareerProfile() {
-        driver.findElement(PROFILE_ICON).click();
-        driver.findElement(MY_PROFILE_BUTTON).click();
-        LOGGER.info("Осуществлен вход в профиль 'Хабр Карьера'");
-    }
-
-     */
-
     @Step("Открытие ссылки через строку поиска во вкладке 'образование'")
     public static void getEducationLink(String searchQuery, By link) {
         driver.findElement(EDUCATION_BUTTON).click();

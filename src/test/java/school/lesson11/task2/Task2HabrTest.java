@@ -1,7 +1,10 @@
 package school.lesson11.task2;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Story;
 import org.junit.*;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.openqa.selenium.By;
 import school.habrStructure.HabrMainPage;
 import school.habrStructure.HabrMainPageActions;
@@ -16,9 +19,12 @@ import static org.junit.Assert.assertEquals;
  * Test-case2 и Test-case4 находятся по ссылке:
  * https://docs.google.com/document/d/14p2rgzeft96fiHZvV4V5nWB2sE_I9dd-dLs-68lmOtw/edit?usp=sharing
  */
+@DisplayName("Тест-кейсы 2,4 Habr")
 public class Task2HabrTest extends Task2HabrTestCofig {
 
+    @Story("Habr testing")
     @Test
+    @Description("Поиск и добавление комментария в закладки")
     public void testCase2() {
         HabrMainPageActions.logIn(school.lesson14.ConfProperties.getProperty("habrLoginEmail"), school.lesson14.ConfProperties.getProperty("habrLoginPassword"));
         HabrMainPageActions.findSmthFromSearchRaw("Selenium IDE");
@@ -27,7 +33,9 @@ public class Task2HabrTest extends Task2HabrTestCofig {
         Assertions.assertEquals(LINK_TITLE_TEXT, driver.findElement(HabrMainPage.LINK_POST_TITLE).getText());
     }
 
+    @Story("Habr testing")
     @Test
+    @Description("Редактирование профиля данной информацией и выход из него")
     public void testCase4() {
         HabrMainPageActions.logIn(school.lesson14.ConfProperties.getProperty("habrLoginEmail"), school.lesson14.ConfProperties.getProperty("habrLoginPassword"));
         HabrMainPageActions.openProfileSettings();

@@ -1,7 +1,10 @@
 package school.lesson13.task2;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Story;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.openqa.selenium.By;
 import school.habrStructure.*;
 import school.lesson14.ConfProperties;
@@ -13,9 +16,12 @@ import static org.junit.Assert.assertEquals;
  * Test-cases находятся по ссылке:
  * https://docs.google.com/document/d/14p2rgzeft96fiHZvV4V5nWB2sE_I9dd-dLs-68lmOtw/edit?usp=sharing
  */
+@DisplayName("Тест-кейсы 1-4 Habr")
 public class Task2HabrTest extends Task2HabrTestConfig {
 
+    @Story("Habr testing")
     @Test
+    @Description("Вход в профиль")
     public void testCase1() {
         LOGGER.info("Осуществлена загрузка сайта");
         HabrMainPageActions.startSignIn();
@@ -33,7 +39,9 @@ public class Task2HabrTest extends Task2HabrTestConfig {
         Assertions.assertEquals("@pechenka9000", driver.findElement(HabrMainPage.PROFILE_ICON_TITLE).getText());
     }
 
+    @Story("Habr testing")
     @Test
+    @Description("Поиск и добавление комментария в закладки")
     public void testCase2() {
         HabrMainPageActions.logIn(school.lesson14.ConfProperties.getProperty("habrLoginEmail"), school.lesson14.ConfProperties.getProperty("habrLoginPassword"));
         HabrMainPageActions.findSmthFromSearchRaw("Selenium IDE");
@@ -42,7 +50,9 @@ public class Task2HabrTest extends Task2HabrTestConfig {
         Assertions.assertEquals(LINK_TITLE_TEXT, driver.findElement(HabrMainPage.LINK_POST_TITLE).getText());
     }
 
+    @Story("Habr testing")
     @Test
+    @Description("Создание публикации")
     public void testCase3() {
         HabrMainPageActions.logIn(school.lesson14.ConfProperties.getProperty("habrLoginEmail"), school.lesson14.ConfProperties.getProperty("habrLoginPassword"));
         HabrMainPageActions.createNewPublication();
@@ -63,7 +73,9 @@ public class Task2HabrTest extends Task2HabrTestConfig {
         HabrPublicationCreatorActions.createPublicationCompletion();
     }
 
+    @Story("Habr testing")
     @Test
+    @Description("Редактирование профиля данной информацией и выход из него")
     public void testCase4() {
         HabrMainPageActions.logIn(school.lesson14.ConfProperties.getProperty("habrLoginEmail"), ConfProperties.getProperty("habrLoginPassword"));
         HabrMainPageActions.openProfileSettings();

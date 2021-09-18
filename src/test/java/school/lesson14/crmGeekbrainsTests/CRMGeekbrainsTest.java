@@ -1,6 +1,7 @@
 package school.lesson14.crmGeekbrainsTests;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Story;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -17,6 +18,7 @@ import static org.junit.Assert.assertEquals;
 @DisplayName("Позитивные тест-кейсы CRMGeekbrains")
 public class CRMGeekbrainsTest extends CRMGeekbrainsTestConfig {
 
+    @Story("CRM testing")
     @Test
     @Description("Создание проекта")
     public void testCase1() {
@@ -42,6 +44,7 @@ public class CRMGeekbrainsTest extends CRMGeekbrainsTestConfig {
         LOGGER.info("Осуществлена верификация введенных данных");
     }
 
+    @Story("CRM testing")
     @Test
     @Description("Создание контактного лица в организации с минимально заполненной информацией")
     public void testCase2() {

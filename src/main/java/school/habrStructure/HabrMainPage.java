@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 public class HabrMainPage {
     protected static WebDriver driver;
     protected static final Logger LOGGER  = LoggerFactory.getLogger(HabrMainPage.class.getName());
-    protected static final String WEB_SITE_LINK  = "https://habr.com/ru/all/";
     protected static final By PROFILE_EMPTY_ICON = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div[2]/div/div");
     public static final By PROFILE_ICON       = By.xpath("//div[@data-test-id='menu-toggle-user']//*[local-name()='svg']");
     public static final By PROFILE_ICON_TITLE = By.xpath("//a[normalize-space()='@pechenka9000']");

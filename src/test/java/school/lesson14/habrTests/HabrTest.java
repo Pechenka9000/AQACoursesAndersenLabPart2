@@ -1,13 +1,13 @@
 package school.lesson14.habrTests;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Story;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.openqa.selenium.By;
 import school.habrStructure.*;
 import school.lesson14.ConfProperties;
-
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
@@ -20,6 +20,7 @@ import static org.junit.Assert.assertEquals;
 @DisplayName("Позитивные тест-кейсы Habr")
 public class HabrTest extends HabrTestConfig {
 
+    @Story("Habr testing")
     @Test
     @Description("Вход в профиль")
     public void testCase1() {
@@ -39,6 +40,7 @@ public class HabrTest extends HabrTestConfig {
         Assertions.assertEquals("@pechenka9000", driver.findElement(HabrMainPage.PROFILE_ICON_TITLE).getText());
     }
 
+    @Story("Habr testing")
     @Test
     @Description("Поиск и добавление комментария в закладки")
     public void testCase2() {
@@ -49,6 +51,7 @@ public class HabrTest extends HabrTestConfig {
         Assertions.assertEquals(LINK_TITLE_TEXT, driver.findElement(HabrMainPage.LINK_POST_TITLE).getText());
     }
 
+    @Story("Habr testing")
     @Test
     @Description("Создание публикации")
     public void testCase3() {
@@ -71,6 +74,7 @@ public class HabrTest extends HabrTestConfig {
         HabrPublicationCreatorActions.createPublicationCompletion();
     }
 
+    @Story("Habr testing")
     @Test
     @Description("Редактирование профиля данной информацией и выход из него")
     public void testCase4() {
@@ -90,6 +94,7 @@ public class HabrTest extends HabrTestConfig {
         HabrMainPageActions.logOut();
     }
 
+    @Story("Habr testing")
     @Test
     @Description("Вход в профиль Хабр-Карьера")
     public void testCase5() {
@@ -114,6 +119,7 @@ public class HabrTest extends HabrTestConfig {
         Assertions.assertEquals(EXPECTED_HABR_CAREER_PROFILE_NAME, driver.findElement(HabrCareerPage.MY_NAME_IN_PROFILE).getText());
     }
 
+    @Story("Habr testing")
     @Test
     @Description("Поиск образовательного курса и выход из профиля Хабр-Карьера")
     public void testCase6() {

@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import school.habrStructure.*;
 import school.lesson14.ConfProperties;
-
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.fail;

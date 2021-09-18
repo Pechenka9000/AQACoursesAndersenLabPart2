@@ -1,15 +1,17 @@
 package school.lesson12.task1;
 
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+@DisplayName("Тестирование треугольника")
 @ExtendWith(TestResultLoggerExtension.class)
 class TriangleTest extends TriangleTestConfig{
 
     @Test
-    @DisplayName("Triangle assertPerimeter test")
+    @Description("Triangle assertPerimeter test")
     void computePerimeterTest() {
         for(int i = 0; i < expectedTrianglePerimeters.size(); i++) {
             LOGGER.info("Соответствие периметров:\nexpected - " + expectedTrianglePerimeters.get(i) +
@@ -19,7 +21,7 @@ class TriangleTest extends TriangleTestConfig{
     }
 
     @Test
-    @DisplayName("Triangle assertSquare test")
+    @Description("Triangle assertSquare test")
     void computeSquareTest() {
         for(int i = 0; i < expectedTriangleSquares.size(); i++) {
             LOGGER.info("Соответствие площадей:\nexpected - " + expectedTriangleSquares.get(i) +
@@ -29,7 +31,7 @@ class TriangleTest extends TriangleTestConfig{
     }
 
     @Test
-    @DisplayName("Triangle reality")
+    @Description("Triangle reality")
     void isTriangleTest() {
         TriangleRepository.getTriangleList().forEach(triangle -> {
             LOGGER.info("Проверка треугольника на существование:\nexpected - true\nactual - " + Triangle.isTriangle(triangle));

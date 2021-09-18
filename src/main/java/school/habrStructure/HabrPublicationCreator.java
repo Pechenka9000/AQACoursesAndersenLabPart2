@@ -10,7 +10,6 @@ public class HabrPublicationCreator {
     protected static final Logger LOGGER  = LoggerFactory.getLogger(HabrPublicationCreator.class.getName());
     protected static final By ADD_PUBLICATION_TITLE = By.xpath("//div[@class='ProseMirror']");
     protected static final By EMPTY_PUBLICATION_PARAGRAPH = By.xpath("//div[@class='node node_paragraph is-empty']");
-    protected static final By FILED_PUBLICATION_PARAGRAPH = By.xpath("//div[@class='node node_paragraph']");
     public static final By READY_TO_PUBLICATION_BUTTON = By.xpath("//button[contains(text(),'Готово к публикации')]");
     protected static final By ADD_PUBLICATION_HUBS = By.xpath("//input[@placeholder='Выберите хабы']");
     protected static final By DESIRED_HUB = By.xpath("//span[contains(text(),'IT-систем *')]");
